@@ -91,6 +91,10 @@ body {
   cursor: pointer;
 }
 
+.signUpBtn{
+    text-decoration: none;
+}
+
 
 .loginFooter {
     padding-top: 10px;

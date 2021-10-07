@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect,Link} from 'react-router-dom';
 import './LoginForm.css';
 
 
@@ -12,6 +12,7 @@ function LoginFormPage() {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+
 
   if (sessionUser) return (
     <Redirect to="/" />
@@ -26,6 +27,8 @@ function LoginFormPage() {
         if (data && data.errors) setErrors(data.errors);
       });
   }
+
+
 
   return (
     <div className="login">
@@ -60,6 +63,7 @@ function LoginFormPage() {
         </div>
         <div className="loginBtn">
       <button className="submitBtn"type="submit">Sign In</button>
+      <Link to="/signup" className="signUpBtn">Sign up</Link>
       </div>
       <div className="loginFooter">
       <a href='https://github.com/Andrewcodes12'>GitHub</a>
