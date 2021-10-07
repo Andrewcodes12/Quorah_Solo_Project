@@ -3,7 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
-import logo from '../../public/images/Logo.png'
+
 
 
 function LoginFormPage() {
@@ -29,16 +29,16 @@ function LoginFormPage() {
 
   return (
     <div className="login">
-    <div className="login__container">
-    <div className="login__desc">
+    <div className="loginContainer">
+    <div className="loginDesc">
     <p>A place to share whats on your mind </p>
     </div>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <div className="login__inputFields">
-      <div className="login__inputField">
+      <div className="loginInputFields">
+      <div className="loginInputField">
         <input
           type="text"
           value={credential}
@@ -47,7 +47,7 @@ function LoginFormPage() {
           required
         />
         </div>
-        <div className="login__inputField">
+        <div className="loginInputField">
         <input
         className="password"
           type="password"
@@ -61,7 +61,7 @@ function LoginFormPage() {
         <div className="loginBtn">
       <button className="submitBtn"type="submit">Sign In</button>
       </div>
-      <div className="login__footer">
+      <div className="loginFooter">
       <a href='https://github.com/Andrewcodes12'>GitHub</a>
       <a href='https://www.linkedin.com/in/andrewfava/'>LinkedIn</a>
       </div>

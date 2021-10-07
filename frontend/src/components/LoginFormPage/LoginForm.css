@@ -16,9 +16,9 @@ body {
     height: 100vh;
     position: static;
   }
- 
 
-.login__container {
+
+.loginContainer {
     display: flex;
     flex-direction: column;
     position: static;
@@ -29,14 +29,14 @@ body {
   }
 
 
-  .login__desc {
+  .loginDesc {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 10px;
   }
 
-  .login__desc > p {
+  .loginDesc > p {
     color: black;
     text-align: center;
     font-weight: 500;
@@ -44,17 +44,17 @@ body {
   }
 
 
-  .login__inputFields {
+  .loginInputFields {
     display: flex;
     flex-direction: column;
     padding: 5px;
   }
 
-  .login__inputField {
+  .loginInputField {
       padding: 5px;
   }
 
-  .login__inputField > input {
+  .loginInputField > input {
     padding: 10px;
     width: 100%;
     outline: none;
@@ -85,7 +85,7 @@ body {
   }
 
 
-  .login__footer {
+  .loginFooter {
     padding-top: 10px;
     display: flex;
     align-items: center;
