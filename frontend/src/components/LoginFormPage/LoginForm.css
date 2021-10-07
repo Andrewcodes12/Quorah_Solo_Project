@@ -9,16 +9,23 @@ body {
     font-weight: bold;
   }
 
-  .login {
+.login{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     position: static;
-  }
+}
 
+.loginLogo{
+    display: flex;
+    justify-content: center;
+    object-fit: container;
 
-.loginContainer {
+    width: auto;
+}
+
+.loginContainer{
     display: flex;
     flex-direction: column;
     position: static;
@@ -26,68 +33,68 @@ body {
     width: 700px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-  }
+}
 
 
-  .loginDesc {
+.loginDesc {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 10px;
-  }
+}
 
-  .loginDesc > p {
+.loginDesc > p {
     color: black;
     text-align: center;
     font-weight: 500;
     font-size: 20px;
-  }
+}
 
 
-  .loginInputFields {
+.loginInputFields {
     display: flex;
     flex-direction: column;
     padding: 5px;
-  }
+}
 
-  .loginInputField {
+.loginInputField {
       padding: 5px;
-  }
+}
 
-  .loginInputField > input {
+.loginInputField > input {
     padding: 10px;
     width: 100%;
     outline: none;
     border: none;
     background-color: rgb(236, 236, 236);
-  }
+}
 
-  .loginBtn{
+.loginBtn{
     padding-left: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+}
 
 
-  .submitBtn{
+.submitBtn{
     padding-left: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+}
 
 
-  .submitBtn:hover{
+.submitBtn:hover{
     color: blue;
   text-decoration: underline;
   cursor: pointer;
-  }
+}
 
 
-  .loginFooter {
+.loginFooter {
     padding-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-  }
+}
