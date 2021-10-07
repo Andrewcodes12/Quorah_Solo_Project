@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 
-
+//login
 router.post(
     '/',
     asyncHandler(async (req, res, next) => {
@@ -34,7 +34,14 @@ router.post(
   );
 
 
-
+//logout
+router.delete(
+    '/',
+    (_req, res) => {
+      res.clearCookie('token');
+      return res.json({ message: 'success' });
+    }
+  );
 
 
 
