@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
+import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect,Link} from 'react-router-dom';
-import './LoginForm.css';
-
+import { Redirect} from 'react-router-dom';
+import { Modal } from '../../../context/Modal';
+import SignupFormModal from '../SignUpFormModal';
+import '../Splash.css'
 
 
 function LoginFormPage() {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
@@ -31,12 +33,17 @@ function LoginFormPage() {
 
 
   return (
-    <div className="login">
-    <div className="loginContainer">
-    <div className="loginDesc">
+
+
+<>
+  <div className="loginDesc">
+  <div className="loginFooter">
+      <a id="link" href='https://github.com/Andrewcodes12'>GitHub</a>
+      <a id="link" href='https://www.linkedin.com/in/andrewfava/'>LinkedIn</a>
+      </div>
     <p>A place to share whats on your mind </p>
     </div>
-    <form onSubmit={handleSubmit}>
+    <form id="loginId" onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
@@ -62,16 +69,12 @@ function LoginFormPage() {
       </div>
         </div>
         <div className="loginBtn">
-      <button className="submitBtn"type="submit">Sign In</button>
-      <Link to="/signup" className="signUpBtn">Sign up</Link>
-      </div>
-      <div className="loginFooter">
-      <a href='https://github.com/Andrewcodes12'>GitHub</a>
-      <a href='https://www.linkedin.com/in/andrewfava/'>LinkedIn</a>
-      </div>
+      <button className="submitBtn"type="submit"htmlFor="loginId">Sign In</button>
+    </div>
     </form>
-    </div>
-    </div>
+</>
+
+
   );
 }
 

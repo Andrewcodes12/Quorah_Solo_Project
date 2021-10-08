@@ -1,0 +1,248 @@
+.signUp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: static;
+}
+
+.signUpLogo{
+    display: flex;
+    justify-content: center;
+    object-fit: container;
+    width: auto;
+}
+
+.signUpContainer{
+    display: flex;
+    flex-direction: column;
+    position: static;
+    padding: 20px;
+    width: 700px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+
+.signUpDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.signUpDesc > p {
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+.signUpInputFields {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.signUpInputField {
+      padding: 5px;
+}
+
+.signUpInputField > input {
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: rgb(236, 236, 236);
+}
+
+.signUpBtn{
+    display: flex;
+    align-items: flex-start;
+    color:#1a89ab;
+    position:relative;
+    height:20px;
+    font-size:1em;
+    padding-right: 30px;
+    cursor:pointer;
+    transition:800ms ease all;
+}
+.signUpBtn:hover{
+    background:#fff;
+    color:#1a89ab;
+  }
+  .signUpBtn:before,.signUpBtn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #1a89ab;
+    transition:400ms ease all;
+  }
+  .signUpBtn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .signUpBtn:hover:before,.signUpBtn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+#link{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-decoration: none;
+    color: #1a89ab
+}
+
+#link:hover{
+    background:#fff;
+    color:black;
+}
+
+
+
+body {
+    background-image: url('../../public/images/login-background.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #636466;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: static;
+}
+
+.loginLogo{
+    display: flex;
+    justify-content: center;
+    object-fit: container;
+    width: auto;
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    position: static;
+    padding: 20px;
+    width: 700px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+
+.loginDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.loginDesc > p {
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+.loginInputFields {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.loginInputField {
+      padding: 5px;
+}
+
+.loginInputField > input {
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: rgb(236, 236, 236);
+}
+
+.loginBtn{
+    display: flex;
+    align-items: flex-start;
+    color:#1a89ab;
+    position:relative;
+    height:20px;
+    font-size:1em;
+    padding-right: 30px;
+    cursor:pointer;
+    transition:800ms ease all;
+}
+.loginBtn:hover{
+    background:#fff;
+    color:#1a89ab;
+  }
+  .loginBtn:before,.loginBtn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #1a89ab;
+    transition:400ms ease all;
+  }
+  .loginBtn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .loginBtn:hover:before,.loginBtn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+.submitBtn{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.submitBtn:hover{
+    color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.loginFooter {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

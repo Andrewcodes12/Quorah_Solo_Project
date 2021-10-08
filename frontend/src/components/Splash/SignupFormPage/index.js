@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../../store/session";
-import './SignupForm.css';
+
 
 
 function SignupFormPage() {
@@ -78,7 +78,7 @@ function SignupFormPage() {
       </div>
       </div>
       <div className="signUpBtnContainer">
-      <button className="signUpBtn"type="submit">Sign Up</button>
+      <button className="signUpBtn"type="submit">Sign up</button>
       </div>
       <div className="signUpFooter">
       <a href='https://github.com/Andrewcodes12'>GitHub</a>
