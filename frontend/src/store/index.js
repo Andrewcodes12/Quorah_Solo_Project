@@ -3,9 +3,11 @@ import thunk from 'redux-thunk';
 
 
 import sessionReducer from './session';
+import feedReducer from './feed';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  feed: feedReducer
 });
 
 

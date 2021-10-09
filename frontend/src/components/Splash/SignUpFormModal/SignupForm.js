@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "../../../store/session";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import '../Splash.css'
@@ -13,7 +13,7 @@ function SignupForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/" />;
+    if (sessionUser) return <Redirect to="/feed" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();

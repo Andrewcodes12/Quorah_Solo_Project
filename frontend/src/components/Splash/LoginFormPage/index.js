@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect} from 'react-router-dom';
-import { Modal } from '../../../context/Modal';
-import SignupFormModal from '../SignUpFormModal';
-import '../Splash.css'
+// import { Modal } from '../../context/Modal';
+// import SignupFormModal from '../Splash/SignUpFormModal';
+import './LoginFormPage.css'
 
 
 function LoginFormPage() {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
@@ -17,7 +17,7 @@ function LoginFormPage() {
 
 
   if (sessionUser) return (
-    <Redirect to="/" />
+    <Redirect to="/feed" />
   );
 
   const handleSubmit = (e) => {
