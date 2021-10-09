@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const asyncHandler = require("express-async-handler")
 const {check} = require("express-validator")
-const { Question } = require("../../db/models")
+const { Question,User,Comment,Like } = require("../../db/models")
 const {requireAuth,csrfProtection} = require('../../utils/auth')
 const {handleValidationErrors} = require("../../utils/validation")
 
@@ -17,8 +17,8 @@ const questionValidator = [
 
 // ROUTE FOR GETTING NEW QUESTION FROM----------------------------------------------------------------------------------------------------
 router.get('/new',requireAuth,csrfProtection, asyncHandler(async(req, res, next) => {
-  const question = await Question.findAll();
-  res.json(question)
+    const question = await Question.findAll();
+    res.json(question)
 }));
 
 // ROUTE FOR CREATING A QUESTION ----------------------------------------------------------------------------------------------------
