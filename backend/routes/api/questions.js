@@ -12,8 +12,9 @@ const questionValidator = [
     .notEmpty()
     .withMessage("Question cannot be empty, Please ask a question")
     .isLength(2000),
-  handleValidationErrors,
+    handleValidationErrors,
 ]
+
 // ROUTE FOR GETTING NEW QUESTION FROM----------------------------------------------------------------------------------------------------
 router.get('/new',requireAuth,csrfProtection, asyncHandler(async(req, res, next) => {
   const question = await Question.findAll();
@@ -22,17 +23,43 @@ router.get('/new',requireAuth,csrfProtection, asyncHandler(async(req, res, next)
 
 // ROUTE FOR CREATING A QUESTION ----------------------------------------------------------------------------------------------------
 router.post('/new', questionValidator,requireAuth,csrfProtection,asyncHandler(async (req,res) => {
-        const {userId,body} = req.body;
-        const newQuestion = await Question.build({
-            userId,
-            body
-        })
-        return res.json(newQuestion)
-    })
+    const {userId,body} = req.body;
+    const newQuestion = await Question.build({
+    userId,
+    body
+})
+    return res.json(newQuestion)
+})
 )
 
 // ROUTE FOR EDITING A QUESTION ----------------------------------------------------------------------------------------------------
+router.put("/:id(\\d+)",questionValidator,requireAuth,csrfProtection,asyncHandler(async (req, res) => {
+    const { questionId, body } = req.body;
+    const question = await Question.findOne({
+    where: {
+    id: questionId,
+},
+});
+    const updatedQuestion = await question.update({
+    body
+});
 
+    return res.json(updatedQuestion);
+})
+);
 
 
 // ROUTE FOR DELETING A QUESTION ----------------------------------------------------------------------------------------------------
+router.delete( "/:id(\\d+)", requireAuth,csrfProtection,asyncHandler(async (req, res) => {
+    const { questionId } = req.body;
+    const question = await Question.destroy({
+    where: {
+    id: questionId,
+    },
+});
+    return res.json(question);
+})
+);
+
+
+module.exports = router;
