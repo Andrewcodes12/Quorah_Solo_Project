@@ -16,7 +16,7 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-     
+
 
       </>
     );
@@ -26,6 +26,7 @@ function Navigation({ isLoaded }){
     <ul>
       <li>
         {isLoaded && sessionLinks}
+    
       </li>
     </ul>
   );

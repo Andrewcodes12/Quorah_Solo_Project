@@ -17,7 +17,7 @@ function LoginFormPage() {
 
 
   if (sessionUser) return (
-    <Redirect to="/feed" />
+    <Redirect to="/" />
   );
 
   const handleSubmit = (e) => {
