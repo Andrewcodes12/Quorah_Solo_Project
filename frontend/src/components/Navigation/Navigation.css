@@ -3,30 +3,31 @@ a{
 }
 
 .navTwo a{
+   color: rgb(155, 155, 155);
+}
+
+a:hover{
    color: black;
 }
 
 .navTwo{
    display: flex;
-   justify-content: space-between;
+   justify-content: space-evenly;
    align-items: center;
-   width: 50%;
+   width: 55%;
    font-size: 20px;
-   gap: 8px;
    margin: 30px;
    margin-left: 15px;
 }
-
-.navBtns{
-   display: flex;
-}
-
 
 .logo{
    align-self: center;
    color: red	;
 }
 
+.navBtns{
+   display: flex;
+}
 
 .mainNav{
    display: flex;
@@ -46,17 +47,14 @@ a{
  border-radius: 75px;
  cursor: pointer;
  justify-content: center;
- line-height: 20px;
  min-height: 40px;
  min-width: 0px;
- overflow: hidden;
  padding: 0px;
  padding-left: 20px;
  padding-right: 20px;
  text-align: center;
- touch-action: manipulation;
  vertical-align: middle;
- font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
  font-size: 12px;
  color: white;
 }
@@ -65,9 +63,4 @@ a{
 .navBtns > button:focus {
  background-color: rgb(155, 0, 0)	;
  color: #ffffff;
-}
-
-.navBtns > button:active {
- background: #09223b;
- color: rgb(255, 255, 255, .7);
 }
