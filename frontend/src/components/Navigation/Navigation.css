@@ -2,11 +2,11 @@ a{
     text-decoration: none;
 }
 
-.navBar a{
+.navTwo a{
    color: black;
 }
 
-.navBar{
+.navTwo{
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -17,18 +17,18 @@ a{
    margin-left: 15px;
 }
 
-.navs{
+.navBtns{
    display: flex;
 }
 
 
-.logoBox{
+.logo{
    align-self: center;
    color: red	;
 }
 
 
-.navBar1{
+.mainNav{
    display: flex;
    align-items: center;
    height: 50px;
@@ -38,20 +38,15 @@ a{
    box-shadow: 0px 15px 10px -15px black;
 }
 
-.navs > button{
+.navBtns > button{
+ display: inline-flex;
+ box-sizing: border-box;
  align-items: center;
  background-color: red;
  border-radius: 75px;
- box-sizing: border-box;
- color: white;
  cursor: pointer;
- display: inline-flex;
- font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
- font-size: 12px;
- font-weight: 600;
  justify-content: center;
  line-height: 20px;
- max-width: 480px;
  min-height: 40px;
  min-width: 0px;
  overflow: hidden;
@@ -61,15 +56,18 @@ a{
  text-align: center;
  touch-action: manipulation;
  vertical-align: middle;
+ font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+ font-size: 12px;
+ color: white;
 }
 
-.navs > button:hover,
-.navs > button:focus {
+.navBtns > button:hover,
+.navBtns > button:focus {
  background-color: rgb(155, 0, 0)	;
  color: #ffffff;
 }
 
-.navs > button:active {
+.navBtns > button:active {
  background: #09223b;
  color: rgb(255, 255, 255, .7);
 }

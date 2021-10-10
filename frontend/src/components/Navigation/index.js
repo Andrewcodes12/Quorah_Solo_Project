@@ -32,30 +32,30 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div className="navBar1">
-      <ul className="navBar">
-        <li className="navs">
+    <div className="mainNav">
+      <ul className="navTwo">
+        <li className="navBtns">
           <NavLink to="/feed">
-            <div className="logoBox">
+            <div className="logo">
               <h2>Quorah</h2>
             </div>
           </NavLink>
         </li>
-        <li className="navs">
+        <li className="navBtns">
           <NavLink exact to="/feed">
             <i className="fas fa-home"></i>
           </NavLink>
         </li>
-        <li className="navs">
+        <li className="navBtns">
           <NavLink to="/question/new">
             <i className="fas fa-edit"></i>
           </NavLink>
         </li>
-        <li className="navs">{isLoaded && sessionLinks}</li>
-        <li className="navs">
+        <li className="navBtns">{isLoaded && sessionLinks}</li>
+        <li className="navBtns">
         <button onClick={demoLogin}>Demo Login</button>
         </li>
-        <li className="navs">
+        <li className="navBtns">
           <button onClick={() => setShowForm(true)}>Add Question</button>
         </li>
       </ul>
