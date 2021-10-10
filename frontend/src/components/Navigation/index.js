@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector,useDispatch} from 'react-redux';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import * as sessionActions from '../../store/session';
@@ -11,6 +11,8 @@ function Navigation({ isLoaded }){
   const dispatch = useDispatch();
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
+  const [showForm, setShowForm] = useState(false);
+
 
 
   const demoLogin = async () => {
@@ -27,24 +29,37 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
-  } else {
-    sessionLinks = (
-      <>
-      
-      <button onClick={demoLogin}>Demo Login</button>
-
-
-      </>
-    );
   }
 
   return (
-    <ul>
-      <li>
-        {isLoaded && sessionLinks}
-
-      </li>
-    </ul>
+    <div className="navBar1">
+      <ul className="navBar">
+        <li className="navs">
+          <NavLink to="/feed">
+            <div className="logoBox">
+              <h2>Quorah</h2>
+            </div>
+          </NavLink>
+        </li>
+        <li className="navs">
+          <NavLink exact to="/feed">
+            <i className="fas fa-home"></i>
+          </NavLink>
+        </li>
+        <li className="navs">
+          <NavLink to="/question/new">
+            <i className="fas fa-edit"></i>
+          </NavLink>
+        </li>
+        <li className="navs">{isLoaded && sessionLinks}</li>
+        <li className="navs">
+        <button onClick={demoLogin}>Demo Login</button>
+        </li>
+        <li className="navs">
+          <button onClick={() => setShowForm(true)}>Add Question</button>
+        </li>
+      </ul>
+    </div>
   );
 }
 

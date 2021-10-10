@@ -1,0 +1,75 @@
+a{
+    text-decoration: none;
+}
+
+.navBar a{
+   color: black;
+}
+
+.navBar{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 50%;
+   font-size: 20px;
+   gap: 8px;
+   margin: 30px;
+   margin-left: 15px;
+}
+
+.navs{
+   display: flex;
+}
+
+
+.logoBox{
+   align-self: center;
+   color: red	;
+}
+
+
+.navBar1{
+   display: flex;
+   align-items: center;
+   height: 50px;
+   margin: -8px;
+   justify-content: center;
+   background-color: white;
+   box-shadow: 0px 15px 10px -15px black;
+}
+
+.navs > button{
+ align-items: center;
+ background-color: red;
+ border-radius: 75px;
+ box-sizing: border-box;
+ color: white;
+ cursor: pointer;
+ display: inline-flex;
+ font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+ font-size: 12px;
+ font-weight: 600;
+ justify-content: center;
+ line-height: 20px;
+ max-width: 480px;
+ min-height: 40px;
+ min-width: 0px;
+ overflow: hidden;
+ padding: 0px;
+ padding-left: 20px;
+ padding-right: 20px;
+ text-align: center;
+ touch-action: manipulation;
+ vertical-align: middle;
+}
+
+.navs > button:hover,
+.navs > button:focus {
+ background-color: rgb(155, 0, 0)	;
+ color: #ffffff;
+}
+
+.navs > button:active {
+ background: #09223b;
+ color: rgb(255, 255, 255, .7);
+}
