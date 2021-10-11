@@ -3,16 +3,15 @@
     margin: auto;
     display: flex;
     border-radius: 0.35rem;
+    color: black;
     justify-content: center;
-
-    backdrop-filter: grayscale(0.5) blur(5px);
-    -webkit-backdrop-filter: grayscale(0.5) blur(5px);
   }
 
   .table {
     width: 100%;
     padding: 0.35rem;
     border-radius: 0.25rem;
+    color: black;
   }
 
   .thead th {
@@ -22,4 +21,5 @@
 
   .tbody td {
     padding: 0.35rem;
+    color: black;
   }

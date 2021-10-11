@@ -7,11 +7,12 @@ const Splash = () => {
         <>
 
 
-
+        <div className="mainDiv">
         <div className="login">
         <div className="loginContainer">
         <LoginFormPage />
         <SignupFormModal />
+        </div>
         </div>
         </div>
 

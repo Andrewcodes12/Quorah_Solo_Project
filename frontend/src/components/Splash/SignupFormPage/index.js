@@ -30,6 +30,7 @@ function SignupFormPage() {
   };
 
   return (
+   
     <div className="signUp">
     <div className="signUpContainer">
     <div className="signUpDesc">
@@ -87,6 +88,7 @@ function SignupFormPage() {
     </form>
     </div>
     </div>
+
   );
 }
 

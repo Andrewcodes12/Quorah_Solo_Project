@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
-const { User, Question, Answer } = require('../../db/models');
+const { User, Question, Comment,Like } = require('../../db/models');
 const { restoreUser, requireAuth } = require('../../utils/auth.js');
 
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const questionsRouter = require('./questions')
+const commentRouter = require('./comment')
 
 
 
@@ -14,6 +15,7 @@ const questionsRouter = require('./questions')
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/questions',questionsRouter)
+router.use('/comment',commentRouter)
 
 
   router.post('/test', (req, res) => {

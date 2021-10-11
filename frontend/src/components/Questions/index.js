@@ -27,15 +27,11 @@ const UsersContainer = () => {
     <div className={styles.tableContainer}>
       <table className={styles.table}>
         <thead className={styles.thead}>
-          <tr>
-            <th>User No.</th>
-            <th>User's Name</th>
-            <th>User's Email</th>
-          </tr>
+
         </thead>
-        <tbody className={styles.tbody}>
-          {Object.values(users).map((user) => <li key={user.id} user={user}> {user.body} </li>)}
-        </tbody>
+        <div className={styles.div}>
+          {Object.values(users).map((user) => <div key={user.id} user={user}> {user.body} </div>)}
+        </div>
       </table>
     </div>
   );

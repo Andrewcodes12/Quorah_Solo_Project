@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect} from 'react-router-dom';
 // import { Modal } from '../../context/Modal';
 // import SignupFormModal from '../Splash/SignUpFormModal';
-import './LoginFormPage.css'
+
 
 
 function LoginFormPage() {
@@ -36,6 +36,7 @@ function LoginFormPage() {
 
 
 <>
+
   <div className="loginDesc">
   <div className="loginFooter">
       <a id="link" href='https://github.com/Andrewcodes12'>GitHub</a>
@@ -72,6 +73,7 @@ function LoginFormPage() {
       <button className="submitBtn"type="submit"htmlFor="loginId">Sign In</button>
     </div>
     </form>
+
 </>
 
 
