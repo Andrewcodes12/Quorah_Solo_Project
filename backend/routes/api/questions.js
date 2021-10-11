@@ -93,19 +93,58 @@ router.get('/:id(\\d+)',csrfProtection,asyncHandler(async (req, res) => {
     })
   }));
 
+// ROUTE FOR GETTING AN EDIT FORM FOR A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
+router.get('/edit/:id(\\d+)',requireAuth,csrfProtection,asyncHandler(async (req, res) => {
+  const questionId = parseInt(req.params.id, 10);
+  const question = await Question.findByPk(questionId);
 
-// ROUTE FOR DELETING A QUESTION ----------------------------------------------------------------------------------------------------
-router.delete( "/:id(\\d+)", requireAuth,csrfProtection,asyncHandler(async (req, res) => {
-    const { questionId } = req.body;
-    const question = await Question.destroy({
-    where: {
-    id: questionId,
-    },
-});
-    return res.json(question);
-})
-);
+  checkPermissions(question,res.locals.user)
 
+  res.json({
+    question,
+    csrfToken: req.csrfToken(),
+  });
+}));
+
+// ROUTE FOR EDITING A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
+
+router.post('/edit/:id(\\d+)',requireAuth,csrfProtection,questionValidator,asyncHandler(async (req, res) => {
+    const storyId = parseInt(req.params.id, 10);
+    const storyToUpdate = await Story.findByPk(storyId);
+
+    checkPermissions(storyToUpdate,res.locals.user)
+
+    const {
+      title,
+      subtitle,
+      topic,
+      body
+    } = req.body;
+
+    const story = {
+      title,
+      subtitle,
+      topicId: topic,
+      body
+    };
+
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+      await storyToUpdate.update(story);
+      res.redirect('/');
+    } else {
+      const topics = await Topic.findAll();
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render('story-edit', {
+        title: 'Edit Story',
+        story: { ...story, id:storyId },
+        errors,
+        topics,
+        csrfToken: req.csrfToken(),
+      });
+    }
+}));
 
 
 
