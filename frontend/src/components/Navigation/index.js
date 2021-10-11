@@ -50,7 +50,7 @@ function Navigation({ isLoaded }){
           </NavLink>
         </li>
         <li className="navBtns">
-          <NavLink to="/question/new">
+          <NavLink to="/questions/new">
             <i className="fas fa-edit"></i>
           </NavLink>
         </li>

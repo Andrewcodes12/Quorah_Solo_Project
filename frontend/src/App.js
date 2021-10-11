@@ -19,11 +19,11 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Splash />
           </Route>
-          <Route path="/questions">
-            <Questions />
+          <Route exact path="/feed">
+           <Questions />
           </Route>
         </Switch>
       )}

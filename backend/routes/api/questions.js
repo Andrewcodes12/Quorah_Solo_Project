@@ -37,16 +37,6 @@ router.get('/new',requireAuth,csrfProtection, asyncHandler(async(req, res, next)
 }));
 
 // ROUTE FOR CREATING A QUESTION ----------------------------------------------------------------------------------------------------
-// router.post('/new', questionValidator,requireAuth,csrfProtection,asyncHandler(async (req,res) => {
-//     const {userId,body} = req.body;
-//     const newQuestion = await Question.build({
-//     userId,
-//     body
-// })
-//     return res.json(newQuestion)
-// })
-// )
-
 router.post('/new',requireAuth, csrfProtection,questionValidator,asyncHandler(async(req, res, next) => {
   const {
     body
@@ -73,7 +63,6 @@ router.post('/new',requireAuth, csrfProtection,questionValidator,asyncHandler(as
 }));
 
 // ROUTE FOR GETTING A QUESTION AT A SPECIFIC QUESTION ID ----------------------------------------------------------------------------------------------------
-
 router.get('/:id(\\d+)',csrfProtection,asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const question = await Question.findByPk(questionId,{
@@ -114,7 +103,6 @@ router.get('/edit/:id(\\d+)',requireAuth,csrfProtection,asyncHandler(async (req,
 }));
 
 // ROUTE FOR EDITING A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
-
 router.post('/edit/:id(\\d+)',requireAuth,csrfProtection,questionValidator,asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
     const questionToUpdate = await Question.findByPk(questionId);
