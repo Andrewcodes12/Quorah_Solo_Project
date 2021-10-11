@@ -109,44 +109,47 @@ router.get('/edit/:id(\\d+)',requireAuth,csrfProtection,asyncHandler(async (req,
 // ROUTE FOR EDITING A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
 
 router.post('/edit/:id(\\d+)',requireAuth,csrfProtection,questionValidator,asyncHandler(async (req, res) => {
-    const storyId = parseInt(req.params.id, 10);
-    const storyToUpdate = await Story.findByPk(storyId);
+    const questionId = parseInt(req.params.id, 10);
+    const questionToUpdate = await Question.findByPk(questionId);
 
-    checkPermissions(storyToUpdate,res.locals.user)
+    checkPermissions(questionToUpdate,res.locals.user)
 
     const {
-      title,
-      subtitle,
-      topic,
       body
     } = req.body;
 
-    const story = {
-      title,
-      subtitle,
-      topicId: topic,
+    const question = {
       body
     };
 
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
-      await storyToUpdate.update(story);
+      await questionToUpdate.update(question);
       res.redirect('/');
     } else {
-      const topics = await Topic.findAll();
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render('story-edit', {
-        title: 'Edit Story',
-        story: { ...story, id:storyId },
+      res.json({
+        question: { ...question, id:questionId },
         errors,
-        topics,
-        csrfToken: req.csrfToken(),
+        like,
+        comment
       });
     }
 }));
 
+// ROUTE FOR GET REQUEST TO DELETE A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
+router.delete('/delete/:id(\\d+)',requireAuth,asyncHandler(async (req, res) => {
+      const { questionId } = req.body;
 
+      const question = await Question.destroy({
+        where: {
+          id: questionId,
+        },
+      });
+      return res.json(questionId);
+    })
+  );
 
 
 
