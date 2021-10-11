@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import * as sessionActions from '../../store/session';
+import SearchBar from './SearchBar/SearchBar';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -51,6 +52,7 @@ function Navigation({ isLoaded }){
             <i className="fas fa-edit"></i>
           </NavLink>
         </li>
+        <div> <SearchBar /> </div>
         <li className="navBtns">{isLoaded && sessionLinks}</li>
         <li className="navBtns">
         <button onClick={demoLogin}>Demo Login</button>
