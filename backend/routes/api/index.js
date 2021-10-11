@@ -16,14 +16,6 @@ router.use('/users', usersRouter);
 router.use('/questions',questionsRouter)
 
 
-
-router.get('/', asyncHandler(async(req, res) => {
-    const questions = await Question.findAll({
-      include: User, Comment
-    })
-    return res.json(questions)
-  }))
-
   router.post('/test', (req, res) => {
       res.json({ requestBody: req.body})
   })

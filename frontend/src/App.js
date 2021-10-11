@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
+import Questions from "./components/Questions";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +21,9 @@ function App() {
         <Switch>
           <Route path="/">
             <Splash />
+          </Route>
+          <Route path="/questions">
+            <Questions />
           </Route>
         </Switch>
       )}

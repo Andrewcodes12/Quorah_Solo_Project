@@ -1,4 +1,3 @@
-
 const LOAD_QUESTIONS = "questions/LOAD_QUESTIONS";
 
 const load = (questions) => ({

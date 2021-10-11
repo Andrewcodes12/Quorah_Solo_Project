@@ -15,6 +15,14 @@ const questionValidator = [
     handleValidationErrors,
 ]
 
+// ROUTE FOR GETTING ALL QUESTIONS----------------------------------------------------------------------------------------------------
+router.get('/', asyncHandler(async(req, res) => {
+    const questions = await Question.findAll({
+      include: User, Comment
+    })
+    return res.json(questions)
+  }))
+
 // ROUTE FOR GETTING NEW QUESTION FROM----------------------------------------------------------------------------------------------------
 router.get('/new',requireAuth,csrfProtection, asyncHandler(async(req, res, next) => {
     const question = await Question.findAll();
@@ -60,6 +68,10 @@ router.delete( "/:id(\\d+)", requireAuth,csrfProtection,asyncHandler(async (req,
     return res.json(question);
 })
 );
+
+
+
+
 
 
 module.exports = router;
