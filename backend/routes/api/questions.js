@@ -15,6 +15,13 @@ const questionValidator = [
     handleValidationErrors,
 ]
 
+const commentValidator = [
+    check('body')
+      .exists({ checkFalsy: true })
+      .isLength({ min: 1 })
+      .withMessage('Comment must be longer than 1 character')
+  ];
+
 // ROUTE FOR GETTING ALL QUESTIONS----------------------------------------------------------------------------------------------------
 router.get('/', asyncHandler(async(req, res) => {
     const questions = await Question.findAll({
@@ -138,7 +145,7 @@ router.post('/edit/:id(\\d+)',requireAuth,csrfProtection,questionValidator,async
     }
 }));
 
-// ROUTE FOR GET REQUEST TO DELETE A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
+// ROUTE FOR REQUEST TO DELETE A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
 router.delete('/delete/:id(\\d+)',requireAuth,asyncHandler(async (req, res) => {
       const { questionId } = req.body;
 
@@ -150,6 +157,35 @@ router.delete('/delete/:id(\\d+)',requireAuth,asyncHandler(async (req, res) => {
       return res.json(questionId);
     })
   );
+
+
+  // ROUTE FOR POSTING A COMMENT TO A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
+  router.post('/:id(\\d+)/comments',requireAuth,csrfProtection,commentValidator,asyncHandler(async (req, res) => {
+    const { body } = req.body;
+    const theQuestionId = parseInt(req.params.id, 10);
+    const comment = await Comment.build({ body, userId: req.session.auth.userId, questionId: theQuestionId })
+    const validationErrors = validationResult(req);
+
+    const user = await User.findByPk(req.session.auth.userId);
+    const { userName, id: userId } = user;
+
+    if (validationErrors.isEmpty()) {
+      await comment.save();
+      const { id, updatedAt } = comment;
+      return res.status(201).json({
+        id,
+        userId,
+        body,
+        userName,
+        updatedAt: updatedAt.toDateString()
+      })
+    } else {
+      const errors = validationErrors.array().map((error) => error.msg);
+      return res.status(406).json({
+        emptyComment: true
+      });
+    }
+}));
 
 
 
