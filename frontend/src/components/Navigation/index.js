@@ -5,6 +5,8 @@ import { useState,useEffect } from 'react';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import * as sessionActions from '../../store/session';
+
+
 import SearchBar from './SearchBar/SearchBar';
 
 function Navigation({ isLoaded }){

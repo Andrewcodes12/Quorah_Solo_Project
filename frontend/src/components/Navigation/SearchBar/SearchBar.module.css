@@ -1,14 +1,14 @@
 .searchBar {
     display: flex;
-    /* padding: 4px; */
+    padding: 4px;
+    margin-top: 10px;
     font-size: 14px;
-
     border: thin solid rgb(180, 180, 180);
   }
 
   .searchBar:focus,
   .searchBar:hover {
-    border: thin solid black;
+    border: thin solid rgb(0, 0, 0);
   }
 
   .div {
