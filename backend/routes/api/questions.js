@@ -25,7 +25,7 @@ const commentValidator = [
 // ROUTE FOR GETTING ALL QUESTIONS----------------------------------------------------------------------------------------------------
 router.get('/', asyncHandler(async(req, res) => {
     const questions = await Question.findAll({
-      include: User, Comment
+      include: User, Comment, Like
     })
     return res.json(questions)
   }))
