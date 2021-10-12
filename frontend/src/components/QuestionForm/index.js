@@ -41,10 +41,10 @@ const QuestionForm = () => {
 
     return (
 
-        <div className="createNewQuestion">
+        <div className="createQuestionMainDiv">
             <div className="createNewQuestionInner">
-              <form onSubmit={handleSubmit} className="createQuestionInputs">
-                <div className="createQuestionProfileHead">
+              <form onSubmit={handleSubmit} className="questionInputs">
+                <div className="questionUserInfo">
                   <p>{sessionUser?.username} asked</p>
                 </div>
                 <input
@@ -53,11 +53,11 @@ const QuestionForm = () => {
                   required
                   value={body}
                   onChange={(e) => setBody(e.target.value)}/>
-                <div className="createQuestionButtons">
+                <div className="questionBtns">
                   <button
-                    className="cancelQuestionButton"
+                    className="cancelQuestionBtn"
                     type="button"> Cancel</button>
-                  <button className="submitQuestionButton" type="submit">
+                  <button className="submitQuestionBtn" type="submit">
                     Submit Question
                   </button>
                 </div>
