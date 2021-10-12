@@ -1,25 +1,10 @@
-import { useSelector } from 'react-redux';
-
 import styles from './questions.css'
-
-// Import the thunk creator
-import { getquestions } from '../../store/questions';
-import { useParams } from 'react-router';
-import { useState } from 'react';
 import useToggle from '../../Hooks/useToggle';
-
+// import { useSelector } from 'react-redux';
 
 const QuestionsContainer = ({question}) => {
 
-  const [showComment, toggleComment] = useToggle("false")
-
-
-
-
-  const questions = useSelector(state => state.questions)
-console.log(questions)
-
-
+  const [showComment, toggleComment] = useToggle("true")
 
   return (
         <div className="questionDiv">
@@ -27,7 +12,7 @@ console.log(questions)
            {question.body}
           </div>
           {/* <div className="userId">
-            question.userId:{question.userId}
+            {sessionUser.username}
           </div> */}
           <ul className="Comments">
             {question.Comments? <button onClick= {toggleComment}>Show Comments</button>: "" }
