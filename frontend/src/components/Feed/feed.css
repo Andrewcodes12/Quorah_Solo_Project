@@ -1,4 +1,4 @@
-.questionFeed{
+/* .questionFeed{
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -7,7 +7,7 @@
     border: 1px solid lightgray;
     border-radius: 5px;
     box-shadow: 0px 5px 8px -9px solid rgab(0, 0, 0, 0.5);
-}
+} */
 
 
 .feedContainer{
