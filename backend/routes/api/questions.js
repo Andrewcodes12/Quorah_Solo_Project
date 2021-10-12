@@ -1,17 +1,18 @@
 const express = require("express")
 const router = express.Router()
 const asyncHandler = require("express-async-handler")
-const {check} = require("express-validator")
+const {check,validationResult} = require("express-validator")
 const { Question,User,Comment,Like } = require("../../db/models")
 const {requireAuth,csrfProtection} = require('../../utils/auth')
 const {handleValidationErrors} = require("../../utils/validation")
+
 
 const questionValidator = [
     check("body")
     .exists({checkFalsy: true})
     .notEmpty()
     .withMessage("Question cannot be empty, Please ask a question")
-    .isLength(2000),
+    .isLength({max:2000}),
     handleValidationErrors,
 ]
 
@@ -42,8 +43,8 @@ router.post('/new',requireAuth, csrfProtection,questionValidator,asyncHandler(as
     body
   } = req.body;
 
-  const question = question.build({
-    userId: req.session.auth.userId,
+  const question = Question.build({
+    userId: req.user.id,
     body
   });
 
@@ -151,10 +152,10 @@ router.delete('/delete/:id(\\d+)',requireAuth,asyncHandler(async (req, res) => {
   router.post('/:id(\\d+)/comments',requireAuth,csrfProtection,commentValidator,asyncHandler(async (req, res) => {
     const { body } = req.body;
     const theQuestionId = parseInt(req.params.id, 10);
-    const comment = await Comment.build({ body, userId: req.session.auth.userId, questionId: theQuestionId })
+    const comment = await Comment.build({ body, userId:req.user.id, questionId: theQuestionId })
     const validationErrors = validationResult(req);
 
-    const user = await User.findByPk(req.session.auth.userId);
+    const user = await User.findByPk(req.user.id);
     const { userName, id: userId } = user;
 
     if (validationErrors.isEmpty()) {

@@ -12,10 +12,6 @@ const QuestionForm = () => {
     const [errors, setErrors] = useState([]);
 
 
-    const handleErrors = async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -35,7 +31,7 @@ const QuestionForm = () => {
           }
 
         }catch(res){
-          handleErrors(res)
+        console.error(errors)
         }
     }
 
