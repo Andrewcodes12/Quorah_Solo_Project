@@ -5,7 +5,7 @@ import { useState,useEffect } from 'react';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import * as sessionActions from '../../store/session';
-
+import QuestionModal from '../Question-modal';
 
 import SearchBar from './SearchBar/SearchBar';
 
@@ -49,19 +49,14 @@ function Navigation({ isLoaded }){
             <i className="fas fa-home"></i>
           </NavLink>
         </li>
-        <li className="navBtns">
-          <NavLink to="/questions/new">
-            <i className="fas fa-edit"></i>
-          </NavLink>
-        </li>
         <div> <SearchBar /> </div>
         <li className="navBtns">{isLoaded && sessionLinks}</li>
         <li className="navBtns">
         <button onClick={demoLogin}>Demo Login</button>
         </li>
         <li className="navBtns">
-          <button onClick={() => setShowForm(true)}>Add Question</button>
-        </li>
+        <QuestionModal/>
+         </li>
       </ul>
     </div>
   );
