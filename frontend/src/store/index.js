@@ -5,11 +5,13 @@ import thunk from "redux-thunk";
 
 import sessionReducer from './session';
 import questionReducer from "./questions";
+import commentReducer from "./comments";
 
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     questions: questionReducer,
+    comments: commentReducer
 
 });
 

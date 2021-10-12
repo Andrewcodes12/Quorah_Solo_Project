@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getquestions } from "../../store/questions";
 import { getComments } from "../../store/comments";
+import './feed.css'
+import QuestionsContainer from "../Questions";
 
 
 
@@ -13,7 +15,7 @@ const Feed = () => {
 
 
     const questions = useSelector(state => {
-        return state.questions.list
+        return state.questions
     })
 
     const comments = useSelector(state => {
@@ -26,12 +28,12 @@ const Feed = () => {
         dispatch(getComments())
     },[dispatch])
 
-    if(!questions) return null
-
-    if(!comments) return null
 
     return (
-        <div>
+        <div className="feedContainer">
+            <div className="questionFeed">
+            {Object.values(questions)?.map((question) => <QuestionsContainer question={question}/>)}
+            </div>
 
         </div>
     )

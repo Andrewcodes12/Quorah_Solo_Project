@@ -1,19 +1,21 @@
 
-body{
-  background-color: gba(255, 255, 255, 0.6);
-}
-
-.holdingQuestions{
+.questionDiv{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  font-size: 40px;
+  background-color: white;
+  justify-content: center;
 }
 
 .questionBody{
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  padding-top: 50px;
+
+}
+
+.Comments{
+  display: flex;
   flex-direction: column;
-  flex:.6;
   color: black;
 }

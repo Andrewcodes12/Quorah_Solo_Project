@@ -1,40 +1,43 @@
+import { useSelector } from 'react-redux';
 
-// Import hooks from 'react'. Which hook is meant for causing side effects?
-import { useEffect } from 'react';
-// Import hooks from 'react-redux'
-import { useSelector, useDispatch } from 'react-redux';
-
-import styles from './QuestionsContainer.module.css'
+import styles from './questions.css'
 
 // Import the thunk creator
 import { getquestions } from '../../store/questions';
 import { useParams } from 'react-router';
+import { useState } from 'react';
 
 
 
-const UsersContainer = () => {
-  // Declare variables from hooks
-  const dispatch = useDispatch();
-  const {questionId} = useParams()
-  const users = useSelector(state => state.questions)
+const QuestionsContainer = ({question}) => {
 
-  // Use a 'react' hook and cause a side effect
-  useEffect(() => {
-    dispatch(getquestions());
-  }, [dispatch]);
+  const [showComment, setShowComment] = useState("false")
+
+
+
+  const questions = useSelector(state => state.questions)
+
+
+  function clickHandler(){
+  return setShowComment("true")
+  }
 
   return (
-    <div className={styles.tableContainer}>
-      <table className={styles.table}>
-        <thead className={styles.thead}>
-
-        </thead>
-        <div className={styles.div}>
-          {Object.values(users).map((user) => <div key={user.id} user={user}> {user.body} </div>)}
+        <div className="questionDiv">
+          <div className="questionBody">
+           {question.body}
+          </div>
+          <div className="userId">
+            question.userId:{question.userId}
+          </div>
+            <button onClick={clickHandler}>
+          <ul className="Comments">
+          {question.Comments?.map((comment) => <li> {comment.body} </li>)}
+          </ul>
+          </button>
         </div>
-      </table>
-    </div>
+
   );
 };
 
-export default UsersContainer;
+export default QuestionsContainer;

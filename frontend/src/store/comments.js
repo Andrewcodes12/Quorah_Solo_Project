@@ -27,15 +27,14 @@ export const getComments = (commentId) => async dispatch => {
     }
 }
 
-export const createNewComment = (commentDetails) => async dispatch => {
-    const { userId, body, answerId } = commentDetails
+export const createNewComment = (commentInfo) => async dispatch => {
+    const { userId, body} = commentInfo
     const response = await csrfFetch("/api/comments/new", {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify({
             userId,
-            body,
-            answerId
+            body
         })
     })
 
@@ -45,8 +44,8 @@ export const createNewComment = (commentDetails) => async dispatch => {
 }
 
 
-export const editComment = (commentDetails) => async dispatch => {
-    const { commentId, body } = commentDetails
+export const editComment = (commentInfo) => async dispatch => {
+    const { commentId, body } = commentInfo
     const response = await csrfFetch(`/api/comments/${commentId}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
@@ -73,13 +72,14 @@ export const removeComment = (commentId) => async dispatch => {
     })
 
     if(response.ok){
-        const commentId2 = await response.json()
-        dispatch(remove(commentId2))
-        return commentId2
+        const deleteComment = await response.json()
+        dispatch(remove(deleteComment))
+        return deleteComment
     }
 }
 
 const initialState = {}
+
 const commentReducer = (state=initialState, action) => {
     switch(action.type){
         case LOAD: {
