@@ -31,11 +31,12 @@ console.log(questions)
           </div> */}
           <ul className="Comments">
             {question.Comments? <button onClick= {toggleComment}>Show Comments</button>: "" }
-            <button> Add Comments</button>
-          {showComment && question.Comments?.map((comment) => <li> {comment.body} </li>)}
-
+          {showComment && question.Comments?.map((comment) => <div> {comment.body} </div>)}
+          <button> Add Comments</button>
+          <button> Delete Question </button>
           </ul>
         </div>
+
 
   );
 };

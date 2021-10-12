@@ -1,5 +1,7 @@
 .questionFeed{
-    margin-bottom: 20px;
+    height: auto;
+    margin: 10px 0;
+    color: black;
 }
 
 
@@ -7,12 +9,15 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background-color: white;
-    margin-top: 10px;
-    border: 1px solid lightgray;
     border-radius: 5px;
     box-shadow: 0px 5px 8px -9px solid rgab(0, 0, 0, 0.5);
     height: auto;
     margin-top: 20px;
-
+    background-color: rgba(255, 255, 255, 1);
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 2px solid black;
+    border-radius: 3px;
 }
+
+
