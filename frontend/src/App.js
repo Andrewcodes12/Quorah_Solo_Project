@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
-import Questions from "./components/Questions";
+import Feed from "./components/Feed";
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
             <Splash />
           </Route>
           <Route exact path="/feed">
-           <Questions />
+           <Feed />
           </Route>
         </Switch>
       )}
