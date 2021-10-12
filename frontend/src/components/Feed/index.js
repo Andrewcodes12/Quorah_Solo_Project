@@ -31,9 +31,9 @@ const Feed = () => {
 
     return (
         <div className="feedContainer">
-            <span className="questionFeed">
+            <div className="questionFeed">
             {Object.values(questions)?.map((question) => <QuestionsContainer question={question}/>)}
-            </span>
+            </div>
 
         </div>
     )

@@ -52,7 +52,7 @@ router.post('/new',requireAuth, csrfProtection,questionValidator,asyncHandler(as
 
   if (validatorErrors.isEmpty()) {
     await question.save();
-    res.redirect('/');
+    res.json(question);
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.json({
