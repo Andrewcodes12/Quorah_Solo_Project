@@ -31,6 +31,7 @@ console.log(questions)
           </div> */}
           <ul className="Comments">
             {question.Comments? <button onClick= {toggleComment}>Show Comments</button>: "" }
+            <button> Add Comments</button>
           {showComment && question.Comments?.map((comment) => <li> {comment.body} </li>)}
 
           </ul>
