@@ -1,17 +1,20 @@
 import styles from './questions.css'
 import useToggle from '../../Hooks/useToggle';
+import { useState } from 'react';
 // import { useSelector } from 'react-redux';
 import EditQuestionForm from '../EditQuestionForm';
 
 const QuestionsContainer = ({question}) => {
 
   const [showComment, toggleComment] = useToggle("true")
+  const [showForm, setShowForm] = useState(false);
 
   return (
         <div className="questionDiv">
           <div className="questionBody">
            {question.body}
-           <button className="editQuestionBtn"> Edit Question</button>
+           {showForm && <EditQuestionForm />}
+           <button className="editQuestionBtn" onClick={()=>setShowForm(true)}> Edit Question</button>
           </div>
           {/* <div className="userId">
             {sessionUser.username}

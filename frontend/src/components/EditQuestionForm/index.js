@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatequestions } from "../../store/questions";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const EditQuestionForm = () => {
     const dispatch = useDispatch()
