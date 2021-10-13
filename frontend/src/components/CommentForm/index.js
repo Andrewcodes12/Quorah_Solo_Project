@@ -17,13 +17,13 @@ const CommentForm = () => {
         e.preventDefault()
         setErrors([])
 
-        const questionInfo = {
+        const commentInfo = {
         userId: sessionUser.id,
-           body
+        body,
         }
 
         try{
-          const createdQuestion = await dispatch(createNewComment(questionInfo))
+          const createdQuestion = await dispatch(createNewComment(commentInfo))
 
           if(createdQuestion){
               history.push('/feed')

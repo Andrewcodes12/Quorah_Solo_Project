@@ -20,7 +20,7 @@ const remove = (commentId) => ({
 })
 
 export const getComments = (commentId) => async dispatch => {
-    const response = await fetch(`/api/comments/${commentId}`)
+    const response = await fetch(`/api/comment/${commentId}`)
     if(response.ok){
         const list = await response.json()
         dispatch(load(list))
@@ -29,12 +29,12 @@ export const getComments = (commentId) => async dispatch => {
 
 export const createNewComment = (commentInfo) => async dispatch => {
     const { userId, body} = commentInfo
-    const response = await csrfFetch("/api/comments/new", {
+    const response = await csrfFetch("/api/comment/new", {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify({
             userId,
-            body
+            body,
         })
     })
 
@@ -46,7 +46,7 @@ export const createNewComment = (commentInfo) => async dispatch => {
 
 export const editComment = (commentInfo) => async dispatch => {
     const { commentId, body } = commentInfo
-    const response = await csrfFetch(`/api/comments/${commentId}`, {
+    const response = await csrfFetch(`/api/comment/${commentId}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body:JSON.stringify({
@@ -63,7 +63,7 @@ export const editComment = (commentInfo) => async dispatch => {
 
 export const removeComment = (commentId) => async dispatch => {
 
-    const response = await csrfFetch(`/api/comments/${commentId}`, {
+    const response = await csrfFetch(`/api/comment/${commentId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
