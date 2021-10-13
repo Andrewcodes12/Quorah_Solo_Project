@@ -119,17 +119,16 @@ router.put("/:id(\\d+)",questionValidator,requireAuth,asyncHandler(async (req, r
 );
 
 // ROUTE FOR REQUEST TO DELETE A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
-router.delete('/:id(\d+)',requireAuth,asyncHandler(async (req, res) => {
-      const { questionId } = req.body;
+router.delete('/:id(\\d+)',requireAuth,asyncHandler(async (req, res) => {
+  const questionId = parseInt(req.params.id, 10);
+  const question = await Question.findByPk(questionId);
 
-      const question = await Question.destroy({
-        where: {
-          id: questionId,
-        },
-      });
-      return res.json(questionId);
-    })
-  );
+  await question.destroy();
+  return res.json(questionId);
+})
+);
+
+
 
 
   // ROUTE FOR POSTING A COMMENT TO A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------

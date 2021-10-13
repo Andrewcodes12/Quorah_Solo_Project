@@ -3,7 +3,6 @@ import { useState,useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EditQuestionForm from '../EditQuestionForm';
 import { csrfFetch } from '../../store/csrf';
-
 import './questions.css'
 
 
