@@ -2,7 +2,7 @@ import useToggle from '../../Hooks/useToggle';
 import { useState,useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EditQuestionForm from '../EditQuestionForm';
-
+import { csrfFetch } from '../../store/csrf';
 
 import './questions.css'
 
@@ -17,7 +17,7 @@ const QuestionsContainer = ({question}) => {
 
 
       function deleteQuestion(questionId){
-        fetch(`/delete/${questionId}`,{
+        csrfFetch(`/api/questions/${questionId}`,{
           method:'DELETE'
         }).then((result)=>{
           result.json().then((resp)=>{

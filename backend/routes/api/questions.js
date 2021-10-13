@@ -119,7 +119,7 @@ router.put("/:id(\\d+)",questionValidator,requireAuth,asyncHandler(async (req, r
 );
 
 // ROUTE FOR REQUEST TO DELETE A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
-router.delete('/delete/:id(\\d+)',requireAuth,asyncHandler(async (req, res) => {
+router.delete('/:id(\d+)',requireAuth,asyncHandler(async (req, res) => {
       const { questionId } = req.body;
 
       const question = await Question.destroy({
