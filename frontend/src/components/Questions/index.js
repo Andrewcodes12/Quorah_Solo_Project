@@ -25,17 +25,6 @@ const history = useHistory()
     history.push(`/feed`)
   }
 
-
-      function deleteQuestion(questionId){
-        csrfFetch(`/api/questions/${questionId}`,{
-          method:'DELETE'
-        }).then((result)=>{
-          result.json().then((resp)=>{
-            console.log("deleted")
-          })
-        })
-      }
-
   return (
         <div className="questionDiv">
           <div className="questionBody">
