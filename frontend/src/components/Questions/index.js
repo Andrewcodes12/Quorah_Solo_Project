@@ -11,6 +11,7 @@ const QuestionsContainer = ({question}) => {
         <div className="questionDiv">
           <div className="questionBody">
            {question.body}
+           <button className="editQuestionBtn"> Edit Question</button>
           </div>
           {/* <div className="userId">
             {sessionUser.username}
