@@ -36,6 +36,7 @@ const Feed = () => {
             </div>
 
         </div>
+
     )
 }
 

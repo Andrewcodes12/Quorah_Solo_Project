@@ -11,7 +11,7 @@ const SearchBar = () => {
     setQueryString(e.target.value);
     if (e.target.value) {
       history.replace({
-        pathname: '/',
+        pathname: '/feed',
         search: `?q=${e.target.value}`,
       });
     } else {

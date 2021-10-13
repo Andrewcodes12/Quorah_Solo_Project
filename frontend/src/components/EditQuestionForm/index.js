@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatequestions } from "../../store/questions";
+import { useHistory } from "react-router";
 
-const EditQuestionForm = ({question}) => {
+const EditQuestionForm = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
+
+
+
 
     const sessionUser = useSelector(state => state.session.user)
-    const [body, setBody] = useState(question.Body)
+    const [body, setBody] = useState()
     const [errors, setErrors] = useState([]);
 
 
@@ -43,7 +48,6 @@ const EditQuestionForm = ({question}) => {
                 </div>
                 <input
                   type="text"
-                  placeholder="Start your question with 'What', 'How', 'Why', etc."
                   required
                   value={body}
                   onChange={(e) => setBody(e.target.value)}/>
