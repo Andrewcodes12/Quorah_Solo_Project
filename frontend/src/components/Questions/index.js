@@ -6,6 +6,9 @@ import EditQuestionForm from '../EditQuestionForm';
 
 const QuestionsContainer = ({question}) => {
 
+
+
+
   const [showComment, toggleComment] = useToggle("true")
   const [showForm, setShowForm] = useState(false);
 
@@ -13,7 +16,7 @@ const QuestionsContainer = ({question}) => {
         <div className="questionDiv">
           <div className="questionBody">
            {question.body}
-           {showForm && <EditQuestionForm />}
+           {showForm && <EditQuestionForm questionId={question.id} />}
            <button className="editQuestionBtn" onClick={()=>setShowForm(true)}> Edit Question</button>
           </div>
           {/* <div className="userId">

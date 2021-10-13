@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updatequestions } from "../../store/questions";
 import { useHistory } from "react-router-dom";
 
-const EditQuestionForm = () => {
+
+const EditQuestionForm = ({questionId}) => {
     const dispatch = useDispatch()
+
+
     const history = useHistory()
 
 
@@ -22,7 +25,8 @@ const EditQuestionForm = () => {
 
         const questionInfo = {
         userId: sessionUser.id,
-           body
+        body,
+        questionId
         }
 
         try{
