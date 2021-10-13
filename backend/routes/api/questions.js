@@ -104,35 +104,19 @@ router.get('/edit/:id(\\d+)',requireAuth,csrfProtection,asyncHandler(async (req,
 }));
 
 // ROUTE FOR EDITING A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
-router.post('/edit/:id(\\d+)',requireAuth,csrfProtection,questionValidator,asyncHandler(async (req, res) => {
-    const questionId = parseInt(req.params.id, 10);
-    const questionToUpdate = await Question.findByPk(questionId);
-
-    checkPermissions(questionToUpdate,res.locals.user)
-
-    const {
-      body
-    } = req.body;
-
-    const question = {
-      body
-    };
-
-    const validatorErrors = validationResult(req);
-
-    if (validatorErrors.isEmpty()) {
-      await questionToUpdate.update(question);
-      res.redirect('/');
-    } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
-      res.json({
-        question: { ...question, id:questionId },
-        errors,
-        like,
-        comment
-      });
-    }
-}));
+router.put("/:id(\\d+)",questionValidator,requireAuth,asyncHandler(async (req, res) => {
+    const {questionId, body } = req.body;
+    const question = await Question.findOne({
+      where: {
+        id: questionId,
+      },
+    });
+    const updatedQuestion = await question.update({
+      body,
+    });
+    return res.json(updatedQuestion);
+  })
+);
 
 // ROUTE FOR REQUEST TO DELETE A SPECIFIC QUESTION ----------------------------------------------------------------------------------------------------
 router.delete('/delete/:id(\\d+)',requireAuth,asyncHandler(async (req, res) => {

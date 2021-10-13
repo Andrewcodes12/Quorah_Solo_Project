@@ -1,73 +1,29 @@
-import { csrfFetch } from './csrf';
+import { csrfFetch } from "./csrf";
 
-const LOAD = 'QUESTIONS/LOAD';
-const LOAD_TYPES = 'QUESTIONS/LOAD_TYPES';
-const ADD_ONE = 'QUESTIONS/ADD_ONE';
+const LOAD = "QUESTIONS/LOAD";
+const ADD = "QUESTIONS/ADD";
+const REMOVE = "QUESTIONS/REMOVE";
+
 
 const load = (list) => ({
   type: LOAD,
-  list
+  list,
 });
 
 
-const addOnequestions = (questions) => ({
-  type: ADD_ONE,
-  questions
+const createQuestion = (question) => ({
+  type: ADD,
+  question,
 });
 
+const remove = (questionId) => ({
+  type: REMOVE,
+  questionId,
+});
 
-
-export const createquestions = (questions) => async (dispatch) => {
-  const {userId,body} = questions
-  const response = await csrfFetch(`/api/questions/new`, {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      userId,
-      body
-    })
-  });
-
-  if (response.ok) {
-    const questions = await response.json();
-    dispatch(addOnequestions(questions));
-    return questions;
-  }
-};
-
-export const updatequestions = (questions) => async (dispatch) => {
-  const {body,questionId} = questions
-  const response = await csrfFetch(`/api/questions/${questionId}`, {
-    method: 'put',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      body,
-      questionId
-    })
-  });
-
-  if (response.ok) {
-    const questions = await response.json();
-    dispatch(addOnequestions(questions));
-    return questions;
-  }
-};
-
-export const getOnequestions = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/questions/${id}`);
-
-  if (response.ok) {
-    const questions = await response.json();
-    dispatch(addOnequestions(questions));
-  }
-};
 
 export const getquestions = () => async (dispatch) => {
-  const response = await csrfFetch(`/api/questions`);
+  const response = await fetch(`/api/questions`);
 
   if (response.ok) {
     const list = await response.json();
@@ -75,61 +31,100 @@ export const getquestions = () => async (dispatch) => {
   }
 };
 
+export const createquestions = (questionDetails) => async (dispatch) => {
+   const { userId, body} = questionDetails
+  const response = await csrfFetch("/api/questions/new", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userId,
+      body
+    }),
+  });
+    const newQuestion = await response.json();
+    dispatch(createQuestion(newQuestion));
+    return newQuestion;
 
-const initialState = {
-  list: [],
-  types: []
 };
 
-const sortList = (list) => {
-  return list
-    .sort((questionsA, questionsB) => {
-      return questionsA.no - questionsB.no;
+
+export const updatequestions = (questionDetails) => async dispatch => {
+  const { body, questionId } = questionDetails
+  const response = await csrfFetch(`/api/questions/${questionId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify({
+      body,
+      questionId
     })
-    .map((questions) => questions.id);
-};
+  })
+  if(response.ok){
+    const updatedQuestion = await response.json()
+    dispatch(createQuestion(updatedQuestion))
+    return updatedQuestion
+  }
+}
 
-const questionsReducer = (state = initialState, action) => {
+
+export const removeQuestion = (questionId) => async dispatch => {
+  const response = await csrfFetch(`/api/questions/${questionId}`, {
+    method: "DELETE",
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      questionId
+    })
+  })
+
+  if(response.ok){
+    const removedQuestionId = await response.json()
+    dispatch(remove(removedQuestionId))
+    return removedQuestionId
+  }
+}
+
+const initalState = {};
+
+const questionReducer = (state = initalState, action) => {
   switch (action.type) {
     case LOAD: {
-      const allquestions = {};
-      action.list.forEach((questions) => {
-        allquestions[questions.id] = questions;
+      const allQuestions = {};
+      action.list.forEach((question) => {
+        allQuestions[question.id] = question;
       });
+
       return {
-        ...allquestions,
+        ...allQuestions,
         ...state,
-        list: sortList(action.list)
+        list: action.list,
       };
     }
-    case LOAD_TYPES: {
-      return {
-        ...state,
-        types: action.types
-      };
-    }
-    case ADD_ONE: {
-      if (!state[action.questions.id]) {
-        const newState = {
-          ...state,
-          [action.questions.id]: action.questions
-        };
-        const questionsList = newState.list.map((id) => newState[id]);
-        questionsList.push(action.questions);
-        newState.list = sortList(questionsList);
-        return newState;
+    case ADD: {
+      if(!state[action.question.id]){
+        let newState = {...state, [action.question.id]: action.question}
+        newState.list.push(action.question)
+        return newState
+      }else{
+        let updatedState = { ...state }
+        updatedState[action.question.id] = action.question
+        const newQuestionList = [...updatedState.list]
+        const removeQuestion = newQuestionList.filter(question => question.id === action.question.id)[0]
+        newQuestionList.splice(newQuestionList.findIndex(question => question.id === removeQuestion.id), 1, action.question)
+        updatedState.list = newQuestionList
+        return updatedState
       }
-      return {
-        ...state,
-        [action.questions.id]: {
-          ...state[action.questions.id],
-          ...action.questions
-        }
-      };
+    }
+    case REMOVE: {
+      const deleteState = {  ...state }
+      const newQuestionsList = [...deleteState.list]
+      const removeQuestion = newQuestionsList.filter(question => question.id === action.questionId)
+      removeQuestion.forEach(question => newQuestionsList.splice(newQuestionsList.findIndex(question2 => question2.id === question.id), 1))
+      delete deleteState[action.questionId]
+      deleteState.list = newQuestionsList
+      return deleteState
     }
     default:
       return state;
   }
 };
 
-export default questionsReducer;
+export default questionReducer;
