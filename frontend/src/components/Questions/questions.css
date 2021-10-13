@@ -1,21 +1,19 @@
 
 .questionDiv{
-  margin-top: 10px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  flex: 1;
   flex-direction: column;
+  padding: 10px;
+  background-color: #fff;
+  margin-top: 10px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  box-shadow: 0 5px 8px -9px solid rgab(0,0,0,.5);
 }
 
 .questionBody{
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 30%;
-  padding-top: 50px;
+  align-items: center;
+  flex-direction: column;
 
 }
 
@@ -23,4 +21,30 @@
   display: flex;
   flex-direction: column;
   color: black;
+}
+
+.editQuestionBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.commentBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addComment{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.deleteQuestion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
