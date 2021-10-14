@@ -30,6 +30,13 @@
 
 }
 
+.likeBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
 .commentBtn{
   display: flex;
   justify-content: center;

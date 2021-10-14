@@ -10,7 +10,7 @@ import { getquestions } from '../../store/questions';
 import { useHistory } from 'react-router';
 import { getQuestionComments } from '../../store/comments';
 import { useOpen } from '../../context/commentModal'
-
+import LikeBtn from '../LikeBtn';
 import './questions.css'
 
 
@@ -50,7 +50,7 @@ const {openComment,setOpenComment,setQuestionId} = useOpen()
   },[question.id])
 
 
-  
+
   const onClick = () => {
     setQuestionId(question.id)
     setOpenComment(true)
@@ -71,14 +71,11 @@ const {openComment,setOpenComment,setQuestionId} = useOpen()
           </div> */}
 
           <ul className="Comments">
-            {question.Comments? <button className="commentBtn" onClick= {toggleComment}><i class="fas fa-comments"></i></button>: "" }
+            {question.Comments? <button className="commentBtn" onClick= {toggleComment}>Show Comments</button>: "" }
 
-           {/* <form onSubmit={deleteComments}>
-          {showComment && question.Comments?.map((comment) => <div> {comment.body} <button className="editComment">Edit Comment</button>
+          {comments && comments?.map((comment) => <div> {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>Delete Comment</button> </div>)}
-          </form> */}
-          {comments && comments?.map((comment) => <div> {comment.body} <button className="editComment">Edit Comment</button>
-           <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>Delete Comment</button> </div>)}
+
 
            {openComment && <CommentForm questionId={question.id} />}
           <button className="addComment" onClick={onClick}><i class="fas fa-plus-square"></i></button>
@@ -86,6 +83,9 @@ const {openComment,setOpenComment,setQuestionId} = useOpen()
           <form onSubmit={handleDelete}>
           <button className="deleteQuestion" type="submit"><i class="fas fa-trash-alt"> </i></button>
         </form>
+        <div className="likeBtn">
+           <LikeBtn />
+           </div>
 
 
           </ul>

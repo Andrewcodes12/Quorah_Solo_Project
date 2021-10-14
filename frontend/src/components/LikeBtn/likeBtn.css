@@ -1,0 +1,6 @@
+.LikeBtn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    resize: 4px;
+}
