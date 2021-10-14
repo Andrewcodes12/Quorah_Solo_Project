@@ -44,7 +44,7 @@ const history = useHistory()
           <ul className="Comments">
             {question.Comments? <button className="commentBtn" onClick= {toggleComment}><i class="fas fa-comments"></i></button>: "" }
           {showComment && question.Comments?.map((comment) => <div> {comment.body} <button className="editComment">Edit Comment</button> <button className="deleteComment">Delete Comment</button> </div>)}
-
+          
           {commentForm && <CommentForm questionId={question.id} />}
           <button className="addComment" onClick={()=>setCommentForm(true)}><i class="fas fa-plus-square"></i></button>
 

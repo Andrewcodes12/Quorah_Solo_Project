@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom";
 import { createNewComment } from "../../store/comments";
 
 
-const CommentForm = () => {
+const CommentForm = ({questionId}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
     const [body, setBody] = useState('')
     const [errors, setErrors] = useState([]);
+
 
 
 
@@ -20,6 +21,7 @@ const CommentForm = () => {
         const commentInfo = {
         userId: sessionUser.id,
         body,
+        questionId
         }
 
         try{
