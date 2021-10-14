@@ -26,10 +26,11 @@ router.get("/:id(\\d+)",asyncHandler(async (req, res) => {
 
 // ROUTE FOR POSTING COMMENTS----------------------------------------------------------------------------------------------------
 router.post("/new", commentValidator,requireAuth,asyncHandler(async (req, res) => {
-      const { userId,  body} = req.body
+      const { userId,body,questionId} = req.body
       const newComment = await Comment.build({
           userId,
           body,
+          questionId
       })
     return res.json(newComment)
 
