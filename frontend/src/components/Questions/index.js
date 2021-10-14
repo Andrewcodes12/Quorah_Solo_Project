@@ -26,20 +26,15 @@ const history = useHistory()
     e.preventDefault()
     await dispatch(removeQuestion(question.id))
     history.push(`/feed`)
+
+    console.log("is this getting invoked")
   }
 
-  const deleteComments = async (e) => {
-    e.preventDefault()
-    await dispatch(removeComment(comments.commentId))
-    history.push(`/feed`)
+  const deleteComments = async (id) => {
+    await dispatch(removeComment(id))
   }
 
 
-  const comments = useSelector(state => {
-    return state.comments.commentsList
-})
-
-console.log(comments)
 
   return (
         <div className="questionDiv">
@@ -58,7 +53,7 @@ console.log(comments)
             {question.Comments? <button className="commentBtn" onClick= {toggleComment}><i class="fas fa-comments"></i></button>: "" }
            <form onSubmit={deleteComments}>
           {showComment && question.Comments?.map((comment) => <div> {comment.body} <button className="editComment">Edit Comment</button>
-           <button className="deleteComment">Delete Comment</button> </div>)}
+           <button className="deleteComment" onClick = {()=>deleteComments(comment.id)}>Delete Comment</button> </div>)}
           </form>
           {commentForm && <CommentForm questionId={question.id} />}
           <button className="addComment" onClick={()=>setCommentForm(true)}><i class="fas fa-plus-square"></i></button>
