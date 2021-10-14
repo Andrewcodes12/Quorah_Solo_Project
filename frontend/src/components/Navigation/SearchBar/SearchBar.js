@@ -8,6 +8,7 @@ const SearchBar = () => {
   const [queryString, setQueryString] = useState(new URLSearchParams(history.location.search).get('q') ?? '');
 
   const updateSearch = (e) => {
+    console.log(e.target.value)
     setQueryString(e.target.value);
     if (e.target.value) {
       history.replace({
@@ -19,11 +20,15 @@ const SearchBar = () => {
         pathname: '',
       });
     }
+
   };
+
 
   return (
     <div className={styles.div}>
-      <input placeholder="Search Quorah" className={styles.searchBar} type="search" value={queryString} onChange={updateSearch} />
+      <form onSubmit={updateSearch}>
+      <input placeholder="Search Quorah" className={styles.searchBar} type="search"  />
+      </form>
     </div>
   );
 };

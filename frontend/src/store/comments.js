@@ -104,8 +104,8 @@ const commentReducer = (state=initialState, action) => {
             return newState
         }
         case ADD: {
-            if(!state[action.comment.id]){
-                const newestState = { ...state, [action.comment.id]: action.comment}
+            if(!state[action.comment?.id]){
+                const newestState = { ...state, [action.comment?.id]: action.comment}
                 newestState.commentsList.push(action.comment)
                 return newestState
             }else{
