@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createquestions } from "../../store/questions";
 import './questionform.css'
+import { useOpen } from "../../context/commentModal";
+
+
 
 const QuestionForm = () => {
     const dispatch = useDispatch()
@@ -10,7 +13,7 @@ const QuestionForm = () => {
     const sessionUser = useSelector(state => state.session.user)
     const [body, setBody] = useState('')
     const [errors, setErrors] = useState([]);
-
+    const {setOpen} = useOpen()
 
 
     const handleSubmit = async (e) => {
@@ -26,8 +29,7 @@ const QuestionForm = () => {
           const createdQuestion = await dispatch(createquestions(questionInfo))
 
           if(createdQuestion){
-              history.push('/feed')
-
+              setOpen(false)
           }
 
         }catch(res){

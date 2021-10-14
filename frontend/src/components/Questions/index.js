@@ -5,8 +5,11 @@ import EditQuestionForm from '../EditQuestionForm';
 import CommentForm from '../CommentForm';
 import { removeQuestion } from '../../store/questions';
 import { removeComment } from '../../store/comments';
+import { getComments } from '../../store/comments';
+import { getquestions } from '../../store/questions';
 import { useHistory } from 'react-router';
-
+import { getQuestionComments } from '../../store/comments';
+import { useOpen } from '../../context/commentModal'
 
 import './questions.css'
 
@@ -15,6 +18,7 @@ const QuestionsContainer = ({question}) => {
 const dispatch = useDispatch()
 const history = useHistory()
 
+const {openComment,setOpenComment,setQuestionId} = useOpen()
 
 
   const [showComment, toggleComment] = useToggle("true")
@@ -22,19 +26,36 @@ const history = useHistory()
   const [commentForm,setCommentForm] = useState(false)
 
 
+  const comments = useSelector(state => {
+    return state.comments[question.id]
+})
+
   const handleDelete = async (e) => {
     e.preventDefault()
     await dispatch(removeQuestion(question.id))
     history.push(`/feed`)
 
-    console.log("is this getting invoked")
   }
 
-  const deleteComments = async (id) => {
-    await dispatch(removeComment(id))
+  const deleteComments = async (id,e) => {
+    e.preventDefault()
+    await dispatch(removeComment(id)).then(() => {
+      dispatch(getQuestionComments(question.id))
+    })
+
   }
 
+  useEffect(() => {
+    dispatch(getQuestionComments(question.id))
+  },[question.id])
 
+
+  
+  const onClick = () => {
+    setQuestionId(question.id)
+    setOpenComment(true)
+
+  }
 
   return (
         <div className="questionDiv">
@@ -51,16 +72,22 @@ const history = useHistory()
 
           <ul className="Comments">
             {question.Comments? <button className="commentBtn" onClick= {toggleComment}><i class="fas fa-comments"></i></button>: "" }
-           <form onSubmit={deleteComments}>
+
+           {/* <form onSubmit={deleteComments}>
           {showComment && question.Comments?.map((comment) => <div> {comment.body} <button className="editComment">Edit Comment</button>
-           <button className="deleteComment" onClick = {()=>deleteComments(comment.id)}>Delete Comment</button> </div>)}
-          </form>
-          {commentForm && <CommentForm questionId={question.id} />}
-          <button className="addComment" onClick={()=>setCommentForm(true)}><i class="fas fa-plus-square"></i></button>
+           <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>Delete Comment</button> </div>)}
+          </form> */}
+          {comments && comments?.map((comment) => <div> {comment.body} <button className="editComment">Edit Comment</button>
+           <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>Delete Comment</button> </div>)}
+
+           {openComment && <CommentForm questionId={question.id} />}
+          <button className="addComment" onClick={onClick}><i class="fas fa-plus-square"></i></button>
 
           <form onSubmit={handleDelete}>
           <button className="deleteQuestion" type="submit"><i class="fas fa-trash-alt"> </i></button>
         </form>
+
+
           </ul>
         </div>
 

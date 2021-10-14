@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createNewComment } from "../../store/comments";
-
+import { createNewComment, getQuestionComments } from "../../store/comments";
+import { useOpen } from "../../context/commentModal";
 
 const CommentForm = ({questionId}) => {
     const dispatch = useDispatch()
@@ -11,30 +11,30 @@ const CommentForm = ({questionId}) => {
     const [body, setBody] = useState('')
     const [errors, setErrors] = useState([]);
 
-
+  const {openComment,setOpenComment,question_id} = useOpen()
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors([])
 
+
+
+
         const commentInfo = {
         userId: sessionUser.id,
         body,
-        questionId
+        questionId:question_id
         }
 
         try{
           const createdQuestion = await dispatch(createNewComment(commentInfo))
 
-          if(createdQuestion){
-              history.push('/feed')
-
-          }
-
         }catch(res){
         console.error(errors)
         }
+        dispatch(getQuestionComments(question_id))
+        setOpenComment(false)
     }
 
     return (

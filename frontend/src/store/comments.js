@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD = "comments/LOAD"
 const ADD = "comments/ADD"
 const REMOVE = "comments/REMOVE"
+const LOAD_QUESTIONS = "comments/load_comments"
 
 const load = (commentsList) => ({
     type: LOAD,
@@ -19,6 +20,21 @@ const remove = (commentId) => ({
     commentId
 })
 
+const loadQuestion = (comments,questionId) => ({
+type: LOAD_QUESTIONS,
+comments,
+questionId
+})
+
+export const getQuestionComments = (questionId) => async dispatch => {
+    const response = await fetch(`/api/comment/questions/${questionId}`)
+    if(response.ok){
+
+        const list = await response.json()
+        dispatch(loadQuestion(list,questionId))
+    }
+}
+
 export const getComments = (commentId) => async dispatch => {
     const response = await fetch(`/api/comment/${commentId}`)
     if(response.ok){
@@ -29,6 +45,7 @@ export const getComments = (commentId) => async dispatch => {
 
 export const createNewComment = (commentInfo) => async dispatch => {
     const { userId, body,questionId } = commentInfo
+    
     const response = await csrfFetch("/api/comment/new", {
         method: "POST",
         headers: { "Content-Type": "application/json"},
@@ -72,11 +89,11 @@ export const removeComment = (commentId) => async dispatch => {
         })
     })
 
-    if(response.ok){
-        const deleteComment = await response.json()
-        dispatch(remove(deleteComment))
-        return deleteComment
-    }
+    // if(response.ok){
+    //     const deleteComment = await response.json()
+    //     dispatch(load(deleteComment))
+    //     return deleteComment
+    // }
 }
 
 const initialState = {}
@@ -116,7 +133,12 @@ const commentReducer = (state=initialState, action) => {
                 newCommentsList.splice(newCommentsList.findIndex(comment => comment.id === removeComment.id), 1, action.comment)
                 updatedState.commentsList = newCommentsList
                 return updatedState
-
+            }
+        }
+        case LOAD_QUESTIONS: {
+            return {
+                ...state,
+                [action.questionId]: action.comments
             }
         }
         default:

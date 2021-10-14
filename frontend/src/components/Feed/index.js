@@ -26,7 +26,8 @@ const Feed = () => {
     useEffect(() => {
         dispatch(getquestions())
         dispatch(getComments())
-    },[dispatch])
+
+    },[dispatch,comments])
 
 
     return (

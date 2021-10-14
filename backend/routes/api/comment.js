@@ -15,6 +15,18 @@ const commentValidator = [
   ];
 
 
+
+  router.get("/questions/:id(\\d+)",asyncHandler(async(req, res) => {
+    const comments = await Comment.findAll({
+      where: {
+        questionId: req.params.id
+      }
+    });
+    return res.json(comments);
+  })
+);
+
+
 // ROUTE FOR GETTING ALL COMMENTS----------------------------------------------------------------------------------------------------
 router.get("/:id(\\d+)",asyncHandler(async (req, res) => {
     const comments = await Comment.findAll({
@@ -27,11 +39,8 @@ router.get("/:id(\\d+)",asyncHandler(async (req, res) => {
 // ROUTE FOR POSTING COMMENTS----------------------------------------------------------------------------------------------------
 router.post("/new", commentValidator,requireAuth,asyncHandler(async (req, res) => {
       const { userId,body,questionId} = req.body
-      const newComment = await Comment.create({
-          userId,
-          body,
-          questionId
-      })
+      const newComment = await Comment.create(
+        req.body)
     return res.json(newComment)
 
   })
@@ -62,8 +71,11 @@ router.delete("/:id(\\d+)", requireAuth, asyncHandler(async(req, res) => {
 
   if(comment){
    await comment.destroy()
+   const comments = await Comment.findAll({
+    include: User
+   })
+   return res.json(comments)
   }
-  return res.json(commentId)
 }));
 
 module.exports = router;
