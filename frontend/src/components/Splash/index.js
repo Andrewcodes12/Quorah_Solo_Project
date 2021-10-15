@@ -1,5 +1,6 @@
 import LoginFormPage from "./LoginFormPage"
 import SignupFormModal from "./SignUpFormModal"
+import Footer from "../Footer"
 import './Splash.css'
 
 const Splash = () => {
@@ -14,6 +15,7 @@ const Splash = () => {
         <SignupFormModal />
         </div>
         </div>
+        <Footer />
         </div>
 
 
