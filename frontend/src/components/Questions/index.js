@@ -20,7 +20,7 @@ const history = useHistory()
 
 const {openComment,setOpenComment,setQuestionId} = useOpen()
 
-const sessionUser = useSelector(state => state.session.user.username)
+const sessionUser = useSelector(state => state.session.user)
 
   const [showComment, toggleComment] = useToggle("true")
   const [showForm, setShowForm] = useState(false);
@@ -62,7 +62,6 @@ const sessionUser = useSelector(state => state.session.user.username)
         <div className="questionDiv">
 
           <div className="questionBody">
-            <div className="userName"> {sessionUser} Says: </div>
            {question.body}
            {showForm && <EditQuestionForm questionId={question.id} />}
            <button className="editQuestionBtn" onClick={()=>setShowForm(true)}><i class="fas fa-edit"></i></button>
@@ -75,7 +74,7 @@ const sessionUser = useSelector(state => state.session.user.username)
           <ul className="Comments">
             {question.Comments? <button className="commentBtn" onClick= {toggleComment}>Show Comments</button>: "" }
 
-          {comments && comments?.map((comment) => <div> <div className="userName"> {sessionUser} Answers: </div>{comment.body}
+          {comments && comments?.map((comment) => <div> {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>Delete Comment</button> </div>)}
 
 
