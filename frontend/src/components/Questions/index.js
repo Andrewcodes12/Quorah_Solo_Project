@@ -1,17 +1,21 @@
 import useToggle from '../../Hooks/useToggle';
 import { useState,useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import EditQuestionForm from '../EditQuestionForm';
+import { useHistory } from 'react-router';
+import { useOpen } from '../../context/commentModal'
+
 import CommentForm from '../CommentForm';
+import { getQuestionComments } from '../../store/comments';
+
 import { removeQuestion } from '../../store/questions';
 import { removeComment } from '../../store/comments';
-import { useHistory } from 'react-router';
-import { getQuestionComments } from '../../store/comments';
-import { useOpen } from '../../context/commentModal'
+
+
 import LikeBtn from '../LikeBtn';
 import './questions.css'
 
 import { editComment } from '../../store/comments';
+import EditQuestionForm from '../EditQuestionForm';
 
 
 
@@ -26,6 +30,8 @@ const sessionUser = useSelector(state => state.session.user)
   const [showComment, toggleComment] = useToggle("true")
   const [showForm, setShowForm] = useState(false);
   const [commentForm,setCommentForm] = useState(false)
+
+  
   const [editCom,setEditCom] = useState(false)
 
   const comments = useSelector(state => {
@@ -84,6 +90,7 @@ const sessionUser = useSelector(state => state.session.user)
           {comments?.map((comment) => <div>
             {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
+
            {EditQuestionForm}
            <button onClick={() => editComments(comment.id) }> Edit Comment </button>
            </div>)}
