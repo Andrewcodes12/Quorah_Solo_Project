@@ -11,6 +11,9 @@ import { useOpen } from '../../context/commentModal'
 import LikeBtn from '../LikeBtn';
 import './questions.css'
 
+import { editComment } from '../../store/comments';
+
+
 
 const QuestionsContainer = ({question}) => {
 const dispatch = useDispatch()
@@ -23,7 +26,7 @@ const sessionUser = useSelector(state => state.session.user)
   const [showComment, toggleComment] = useToggle("true")
   const [showForm, setShowForm] = useState(false);
   const [commentForm,setCommentForm] = useState(false)
-  const [editComment,setEditComment] = useState(false)
+  const [editCom,setEditCom] = useState(false)
 
   const comments = useSelector(state => {
     return state.comments[question.id]
@@ -43,6 +46,12 @@ const sessionUser = useSelector(state => state.session.user)
     })
 
   }
+
+  const editComments = async () => {
+    await dispatch(editComment(question.id))
+  history.push(`/feed`)
+  }
+
 
   useEffect(() => {
     dispatch(getQuestionComments(question.id))
@@ -75,6 +84,8 @@ const sessionUser = useSelector(state => state.session.user)
           {comments?.map((comment) => <div>
             {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
+           {EditQuestionForm}
+           <button onClick={() => editComments(comment.id) }> Edit Comment </button>
            </div>)}
 
 
