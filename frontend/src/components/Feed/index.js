@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getquestions } from "../../store/questions";
 import { getComments } from "../../store/comments";
-import Footer from "../Footer";
 import './feed.css'
 import QuestionsContainer from "../Questions";
 
