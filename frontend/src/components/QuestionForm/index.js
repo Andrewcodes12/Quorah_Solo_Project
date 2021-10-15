@@ -7,7 +7,7 @@ import { useOpen } from "../../context/commentModal";
 
 
 
-const QuestionForm = () => {
+const QuestionForm = ({onClose}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)

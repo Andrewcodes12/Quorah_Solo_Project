@@ -77,7 +77,6 @@ const sessionUser = useSelector(state => state.session.user)
             {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
            {editComment && <EditCommentForm questionId={question.id}/>}
-           <button onClick={()=> setEditComment(true)}> Edit comment</button>
            </div>)}
 
 
