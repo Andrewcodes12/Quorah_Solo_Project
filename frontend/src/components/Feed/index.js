@@ -36,7 +36,6 @@ const Feed = () => {
             <div className="questionFeed">
             {Object.values(questions)?.map((question) => <QuestionsContainer question={question}/>)}
             </div>
-            <Footer />
         </div>
 
     )
