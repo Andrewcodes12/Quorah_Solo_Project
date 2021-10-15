@@ -5,7 +5,6 @@ import EditQuestionForm from '../EditQuestionForm';
 import CommentForm from '../CommentForm';
 import { removeQuestion } from '../../store/questions';
 import { removeComment } from '../../store/comments';
-import EditCommentForm from '../EditComment';
 import { useHistory } from 'react-router';
 import { getQuestionComments } from '../../store/comments';
 import { useOpen } from '../../context/commentModal'
@@ -76,7 +75,6 @@ const sessionUser = useSelector(state => state.session.user)
           {comments?.map((comment) => <div>
             {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
-           {editComment && <EditCommentForm questionId={question.id}/>}
            </div>)}
 
 
