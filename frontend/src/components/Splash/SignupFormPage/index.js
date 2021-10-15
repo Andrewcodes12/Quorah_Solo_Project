@@ -14,7 +14,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/feed" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ function SignupFormPage() {
   };
 
   return (
-   
+
     <div className="signUp">
     <div className="signUpContainer">
     <div className="signUpDesc">
