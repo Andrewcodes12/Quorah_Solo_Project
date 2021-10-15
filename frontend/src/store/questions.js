@@ -95,31 +95,15 @@ const questionReducer = (state = initalState, action) => {
       return {
         ...allQuestions,
         ...state,
-        list: action.list,
       };
     }
     case ADD: {
-      if(!state[action.question.id]){
         let newState = {...state, [action.question.id]: action.question}
-        newState.list.push(action.question)
         return newState
-      }else{
-        let updatedState = { ...state }
-        updatedState[action.question.id] = action.question
-        const newQuestionList = [...updatedState.list]
-        const removeQuestion = newQuestionList.filter(question => question.id === action.question.id)[0]
-        newQuestionList.splice(newQuestionList.findIndex(question => question.id === removeQuestion.id), 1, action.question)
-        updatedState.list = newQuestionList
-        return updatedState
-      }
     }
     case REMOVE: {
       const deleteState = {  ...state }
-      const newQuestionsList = [...deleteState.list]
-      const removeQuestion = newQuestionsList.filter(question => question.id === action.questionId)
-      removeQuestion.forEach(question => newQuestionsList.splice(newQuestionsList.findIndex(question2 => question2.id === question.id), 1))
       delete deleteState[action.questionId]
-      deleteState.list = newQuestionsList
       return deleteState
     }
     default:
