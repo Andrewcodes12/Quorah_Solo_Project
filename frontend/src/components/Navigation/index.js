@@ -7,7 +7,7 @@ import './Navigation.css';
 import * as sessionActions from '../../store/session';
 import QuestionModal from '../Question-modal';
 
-import SearchBar from './SearchBar/SearchBar';
+
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -40,16 +40,12 @@ function Navigation({ isLoaded }){
         <li className="navBtns">
           <NavLink to="/feed">
             <div className="logo">
-              <h2>Quorah</h2>
+              <button disabled={!sessionUser}> Quorah</button>
             </div>
           </NavLink>
         </li>
         <li className="navBtns">
-          <NavLink exact to="/feed">
-            <i className="fas fa-home"></i>
-          </NavLink>
         </li>
-        <div> <SearchBar /> </div>
         <li className="navBtns">{isLoaded && sessionLinks}</li>
         <li className="navBtns">
         <button onClick={demoLogin}>Demo Login</button>
