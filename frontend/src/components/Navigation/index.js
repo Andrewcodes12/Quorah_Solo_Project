@@ -44,11 +44,11 @@ function Navigation({ isLoaded }){
             </div>
           </NavLink>
         </li>
-        <li className="navBtns">
-        </li>
         <li className="navBtns">{isLoaded && sessionLinks}</li>
         <li className="navBtns">
+        {!sessionUser?
         <button onClick={demoLogin}>Demo Login</button>
+        : null}
         </li>
         <li className="navBtns">
         <QuestionModal/>

@@ -5,8 +5,7 @@ import EditQuestionForm from '../EditQuestionForm';
 import CommentForm from '../CommentForm';
 import { removeQuestion } from '../../store/questions';
 import { removeComment } from '../../store/comments';
-import { getComments } from '../../store/comments';
-import { getquestions } from '../../store/questions';
+import EditCommentForm from '../EditComment';
 import { useHistory } from 'react-router';
 import { getQuestionComments } from '../../store/comments';
 import { useOpen } from '../../context/commentModal'
@@ -25,7 +24,7 @@ const sessionUser = useSelector(state => state.session.user)
   const [showComment, toggleComment] = useToggle("true")
   const [showForm, setShowForm] = useState(false);
   const [commentForm,setCommentForm] = useState(false)
-
+  const [editComment,setEditComment] = useState(false)
 
   const comments = useSelector(state => {
     return state.comments[question.id]
@@ -74,8 +73,14 @@ const sessionUser = useSelector(state => state.session.user)
           <ul className="Comments">
             {question.Comments? <button className="commentBtn" onClick= {toggleComment}>Show Comments</button>: "" }
 
-          {comments && comments?.map((comment) => <div> {comment.body}
-           <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>Delete Comment</button> </div>)}
+          {comments?.map((comment) => <div>
+            {comment.body}
+           <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
+           {editComment && <EditCommentForm questionId={question.id}/>}
+           <button onClick={()=> setEditComment(true)}> Edit comment</button>
+           </div>)}
+
+
 
 
            {openComment && <CommentForm questionId={question.id} />}
