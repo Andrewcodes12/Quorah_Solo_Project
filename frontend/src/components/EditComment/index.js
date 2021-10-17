@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { editComment } from "../../store/comments";
 
 
-const EditCommentForm = ({questionId}) => {
+const EditCommentForm = ({comment}) => {
     const dispatch = useDispatch()
 
 
@@ -12,23 +12,28 @@ const EditCommentForm = ({questionId}) => {
 
 
     const sessionUser = useSelector(state => state.session.user)
+    const comments = useSelector((state) => state.comments.commentsList);
+
     const [body, setBody] = useState()
     const [errors, setErrors] = useState([]);
 
+
+
+  console.log(comments)
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors([])
 
-        const questionInfo = {
-        userId: sessionUser.id,
+        const commentInfo = {
+
         body,
-        questionId,
+
         }
 
         try{
-          const updatequestion = await dispatch(editComment(questionInfo))
+          const updatequestion = await dispatch(editComment(commentInfo))
 
           if(updatequestion){
               history.push('/feed')

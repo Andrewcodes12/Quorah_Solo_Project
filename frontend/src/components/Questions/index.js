@@ -27,14 +27,15 @@ const history = useHistory()
 
 const {openComment,setOpenComment,setQuestionId} = useOpen()
 
+
+const [showComment, toggleComment] = useToggle("true")
+const [showForm, setShowForm] = useState(false);
+const [commentForm,setCommentForm] = useState(false)
+
+
+const [editCom,setEditCom] = useState(false)
+
 const sessionUser = useSelector(state => state.session.user)
-
-  const [showComment, toggleComment] = useToggle("true")
-  const [showForm, setShowForm] = useState(false);
-  const [commentForm,setCommentForm] = useState(false)
-
-
-  const [editCom,setEditCom] = useState(false)
 
   const comments = useSelector(state => {
     return state.comments[question.id]
@@ -56,12 +57,8 @@ const sessionUser = useSelector(state => state.session.user)
   }
 
   const editComments = async (id) => {
-    await dispatch(editComment(id)).then(() => {
-      dispatch(getQuestionComments(question.id))
-    })
-
-  }
-
+    await dispatch(editComment(id))
+    }
 
   useEffect(() => {
     dispatch(getQuestionComments(question.id))
@@ -96,10 +93,8 @@ const sessionUser = useSelector(state => state.session.user)
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
 
            {editCom && <EditQuestionForm  /> }
-           <button onClick={() => editComments(comment)}> Edit Comment </button>
+           <button onClick={() => editComments(comment.id)}> Edit Comment </button>
            </div>)}
-
-
 
 
            {openComment && <CommentForm questionId={question.id} />}
