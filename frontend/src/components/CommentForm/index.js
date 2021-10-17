@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createNewComment, getQuestionComments } from "../../store/comments";
 import { useOpen } from "../../context/commentModal";
 
-const CommentForm = ({questionId}) => {
+const CommentForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)

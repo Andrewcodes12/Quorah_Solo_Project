@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
 import { getquestions } from "../../store/questions";
 import { getComments } from "../../store/comments";
 import './feed.css'

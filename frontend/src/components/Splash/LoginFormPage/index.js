@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect} from 'react-router-dom';
-// import { Modal } from '../../context/Modal';
-// import SignupFormModal from '../Splash/SignUpFormModal';
+
 
 
 
 function LoginFormPage() {
-  // const [showModal, setShowModal] = useState(false);
+
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');

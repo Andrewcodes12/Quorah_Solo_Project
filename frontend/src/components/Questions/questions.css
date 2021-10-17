@@ -50,7 +50,8 @@ font-size: 24px;
   float: left;
   justify-content: center;
   align-items: center;
-
+  margin-top: 100px;
+  float: left;
 }
 
 .deleteQuestion{
@@ -58,6 +59,7 @@ font-size: 24px;
   float: right;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
 }
 
 
@@ -79,5 +81,4 @@ font-size: 24px;
   display: flex;
   float: right;
   position: inherit;
-
 }
