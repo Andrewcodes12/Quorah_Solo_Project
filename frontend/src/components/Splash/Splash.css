@@ -246,3 +246,12 @@ button, input[type="submit"], input[type="reset"] {
 	cursor: pointer;
 	outline: inherit;
 }
+
+
+.Qheader{
+    font-size: 46px;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

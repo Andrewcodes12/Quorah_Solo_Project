@@ -38,10 +38,7 @@ function LoginFormPage() {
 <>
 
   <div className="loginDesc">
-  <div className="loginFooter">
-      <a id="link" href='https://github.com/Andrewcodes12'>GitHub</a>
-      <a id="link" href='https://www.linkedin.com/in/andrewfava/'>LinkedIn</a>
-      </div>
+    <div className="Qheader"> Quorah </div>
     <p>A place to share whats on your mind </p>
     </div>
     <form id="loginId" onSubmit={handleSubmit}>
