@@ -60,7 +60,7 @@
 .signUpBtn{
     display: flex;
     align-items: flex-start;
-    color:#1a89ab;
+    color:red;
     position:relative;
     height:20px;
     font-size:1em;
@@ -70,7 +70,8 @@
 }
 .signUpBtn:hover{
     background:#fff;
-    color:#1a89ab;
+    color:red;
+    text-decoration: none;
   }
   .signUpBtn:before,.signUpBtn:after{
     content:'';
@@ -224,8 +225,8 @@ body {
 
 
 .submitBtn:hover{
-    color: blue;
-  text-decoration: underline;
+  color: red;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -239,7 +240,7 @@ body {
 
 button, input[type="submit"], input[type="reset"] {
 	background: none;
-	color: inherit;
+	color: red;
 	border: none;
 	padding: 0;
 	font: inherit;
