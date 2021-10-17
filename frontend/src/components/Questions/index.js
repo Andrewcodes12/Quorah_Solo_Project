@@ -55,9 +55,11 @@ const sessionUser = useSelector(state => state.session.user)
 
   }
 
-  const editComments = async () => {
-    await dispatch(editComment(question.id))
-  history.push(`/feed`)
+  const editComments = async (id) => {
+    await dispatch(editComment(id)).then(() => {
+      dispatch(getQuestionComments(question.id))
+    })
+
   }
 
 
@@ -93,8 +95,8 @@ const sessionUser = useSelector(state => state.session.user)
             {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
 
-           {editCom && EditQuestionForm}
-           <button onClick={() => editComments(comment) }> Edit Comment </button>
+           {editCom && <EditQuestionForm  /> }
+           <button onClick={() => editComments(comment)}> Edit Comment </button>
            </div>)}
 
 
