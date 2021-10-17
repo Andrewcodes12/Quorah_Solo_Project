@@ -62,13 +62,13 @@ export const createNewComment = (commentInfo) => async dispatch => {
 }
 
 
-export const editComment = (commentInfo) => async dispatch => {
-
-    const response = await csrfFetch(`/api/comment/${commentInfo}`, {
+export const editComment = (id) => async dispatch => {
+    console.log(id)
+    const response = await csrfFetch(`/api/comment/${id.id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body:JSON.stringify({
-         commentInfo
+         
         })
     })
     if(response.ok){

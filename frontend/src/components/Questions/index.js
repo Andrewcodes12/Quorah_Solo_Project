@@ -30,12 +30,7 @@ const {openComment,setOpenComment,setQuestionId} = useOpen()
 
 const [showComment, toggleComment] = useToggle("true")
 const [showForm, setShowForm] = useState(false);
-const [commentForm,setCommentForm] = useState(false)
 
-
-const [editCom,setEditCom] = useState(false)
-
-const sessionUser = useSelector(state => state.session.user)
 
   const comments = useSelector(state => {
     return state.comments[question.id]
@@ -76,7 +71,9 @@ const sessionUser = useSelector(state => state.session.user)
         <div className="questionDiv">
 
           <div className="questionBody">
+            <div className="questionStuff">
            {question.body}
+           </div>
            {showForm && <EditQuestionForm questionId={question.id} />}
            <button className="editQuestionBtn" onClick={()=>setShowForm(true)}><i class="fas fa-edit"></i></button>
           </div>
@@ -86,18 +83,13 @@ const sessionUser = useSelector(state => state.session.user)
           </div> */}
 
           <ul className="Comments">
-            {question.Comments? <button className="commentBtn" onClick= {toggleComment}>Show Comments</button>: "" }
 
           {comments?.map((comment) => <div>
             {comment.body}
-           <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
-
-           {editCom && <EditQuestionForm  /> }
-           <button onClick={() => editComments(comment.id)}> Edit Comment </button>
+           <button className="deleteComment" id="deleteCom" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
            </div>)}
 
-
-           {openComment && <CommentForm questionId={question.id} />}
+       {openComment && <CommentForm questionId={question.id} />}
           <button className="addComment" onClick={onClick}><i class="fas fa-plus-square"></i></button>
 
           <form onSubmit={handleDelete}>

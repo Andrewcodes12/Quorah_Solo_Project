@@ -4,9 +4,12 @@ import { updatequestions } from "../../store/questions";
 import { useHistory } from "react-router-dom";
 
 
+import { useOpen } from '../../context/commentModal';
+
 const EditQuestionForm = ({questionId}) => {
     const dispatch = useDispatch()
 
+    const {open,setOpen} = useOpen()
 
     const history = useHistory()
 
@@ -59,7 +62,7 @@ const EditQuestionForm = ({questionId}) => {
                   <button
                     className="cancelQuestionBtn"
                     type="button"> Cancel</button>
-                  <button className="submitQuestionBtn" type="submit">
+                  <button className="submitQuestionBtn" type="submit" onClick={setOpen(false)}>
                     Submit Question
                   </button>
                 </div>
