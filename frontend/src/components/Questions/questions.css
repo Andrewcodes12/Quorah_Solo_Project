@@ -24,28 +24,19 @@ font-size: 24px;
 }
 
 .Comments{
-  display: flex;
-  flex-direction: column;
   color: black;
   font-size: 18px;
   justify-content: center;
   align-items: center;
 
-}
-
-.editQuestionBtn{
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
 
 }
+
 
 .likeBtn{
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .commentBtn{
@@ -56,6 +47,7 @@ font-size: 24px;
 
 .addComment{
   display: flex;
+  float: left;
   justify-content: center;
   align-items: center;
 
@@ -63,6 +55,7 @@ font-size: 24px;
 
 .deleteQuestion{
   display: flex;
+  float: right;
   justify-content: center;
   align-items: center;
 }
@@ -73,4 +66,18 @@ font-size: 24px;
   justify-content: center;
   align-items: center;
   font-size: 16px;
+
+}
+
+.actualComment{
+  display: flex;
+  justify-content: center;
+  border-bottom: 0px solid black;
+}
+
+.editQuestionBtn{
+  display: flex;
+  float: right;
+  position: inherit;
+
 }

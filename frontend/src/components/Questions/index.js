@@ -84,7 +84,7 @@ const [showForm, setShowForm] = useState(false);
 
           <ul className="Comments">
 
-          {comments?.map((comment) => <div>
+          {comments?.map((comment) => <div className="actualComment">
             {comment.body}
            <button className="deleteComment" id="deleteCom" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
            </div>)}
