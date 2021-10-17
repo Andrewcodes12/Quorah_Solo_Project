@@ -49,8 +49,10 @@ function Navigation({ isLoaded }){
         <button id="demoBtn" onClick={demoLogin}>Demo Login</button>
         : null}
         </li>
-        <li className="navBtns">
+        <li className="navBtns" id="askQuestionBtn">
+          {sessionUser?
         <QuestionModal/>
+        :null}
          </li>
          <li className="navBtns" id="profileBtn">{isLoaded && sessionLinks}</li>
       </ul>
