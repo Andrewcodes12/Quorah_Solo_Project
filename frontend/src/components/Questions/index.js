@@ -18,6 +18,8 @@ import { editComment } from '../../store/comments';
 import EditQuestionForm from '../EditQuestionForm';
 
 
+import Footer from '../Footer';
+
 
 const QuestionsContainer = ({question}) => {
 const dispatch = useDispatch()
@@ -31,7 +33,7 @@ const sessionUser = useSelector(state => state.session.user)
   const [showForm, setShowForm] = useState(false);
   const [commentForm,setCommentForm] = useState(false)
 
-  
+
   const [editCom,setEditCom] = useState(false)
 
   const comments = useSelector(state => {
@@ -91,8 +93,8 @@ const sessionUser = useSelector(state => state.session.user)
             {comment.body}
            <button className="deleteComment" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
 
-           {EditQuestionForm}
-           <button onClick={() => editComments(comment.id) }> Edit Comment </button>
+           {editCom && EditQuestionForm}
+           <button onClick={() => editComments(comment) }> Edit Comment </button>
            </div>)}
 
 
@@ -110,6 +112,7 @@ const sessionUser = useSelector(state => state.session.user)
 
 
           </ul>
+          <Footer />
         </div>
 
 
