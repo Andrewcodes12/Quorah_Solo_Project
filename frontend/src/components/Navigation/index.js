@@ -40,19 +40,19 @@ function Navigation({ isLoaded }){
         <li className="navBtns">
           <NavLink to="/feed">
             <div className="logo">
-              <button disabled={!sessionUser}> Quorah</button>
+              <button className="homeLogo" disabled={!sessionUser}> Quorah</button>
             </div>
           </NavLink>
         </li>
-        <li className="navBtns">{isLoaded && sessionLinks}</li>
         <li className="navBtns">
         {!sessionUser?
-        <button onClick={demoLogin}>Demo Login</button>
+        <button id="demoBtn" onClick={demoLogin}>Demo Login</button>
         : null}
         </li>
         <li className="navBtns">
         <QuestionModal/>
          </li>
+         <li className="navBtns" id="profileBtn">{isLoaded && sessionLinks}</li>
       </ul>
     </div>
   );

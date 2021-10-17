@@ -21,8 +21,10 @@ a:hover{
 }
 
 .logo{
+   display: flex;
+   justify-content: flex-start;
    align-self: center;
-   color: red	;
+   color: red;
 }
 
 
@@ -35,7 +37,6 @@ a:hover{
    align-items: center;
    height: 50px;
    margin: -8px;
-   justify-content: center;
    background-color: white;
    box-shadow: 0px 15px 10px -15px black;
 }
@@ -66,5 +67,37 @@ a:hover{
 .fas fa-user-circle{
 display: flex;
 justify-content: flex-end;
+
+}
+
+
+.homeLogo{
+   display: flex;
+   justify-content: flex-start;
+   float:inline-start;
+   color: red;
+   margin-left: -200px;
+}
+
+
+#profileBtn{
+   display: flex;
+   justify-content: flex-end;
+   align-content: center;
+   align-items: center;
+   float:right;
+   position: relative;
+   left: 950px;
+
+}
+
+#demoBtn{
+   display: flex;
+   justify-content: flex-end;
+   align-content: center;
+   align-items: center;
+   float:right;
+   position: relative;
+   left: 1400px;
 
 }
