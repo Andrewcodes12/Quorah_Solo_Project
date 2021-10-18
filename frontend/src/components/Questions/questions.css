@@ -15,12 +15,14 @@
   align-items: center;
   flex-direction: column;
   font-size: 12px;
+  text-align: center;
 
 }
 
 .questionStuff{
 display: flex;
 font-size: 24px;
+text-align: center;
 }
 
 .Comments{
@@ -74,7 +76,7 @@ font-size: 24px;
 .actualComment{
   display: flex;
   justify-content: center;
-  border-bottom: 0px solid black;
+  padding-bottom: 10px;
 }
 
 .editQuestionBtn{
