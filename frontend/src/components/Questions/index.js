@@ -86,7 +86,7 @@ const [showForm, setShowForm] = useState(false);
 
           {comments?.map((comment) => <div className="actualComment">
             {comment.body}
-           <button className="deleteComment" id="deleteCom" onClick = {(e)=>deleteComments(comment.id,e)}>  Delete Comment</button>
+           <button className="deleteComment" id="deleteCom" onClick = {(e)=>deleteComments(comment.id,e)}><i class="fas fa-trash-alt"> </i></button>
            </div>)}
 
        {openComment && <CommentForm questionId={question.id} />}
