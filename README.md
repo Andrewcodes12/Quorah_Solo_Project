@@ -4,7 +4,7 @@ A Quora Clone using Express, React, Redux, Thunk, CSS, Node
 
 Quorah is an online website where you can share questions by posting to the main feed. User can compose their question filled with whatever your heart desires! Users can leave comments under a user's question. You can also like said user's question too! Our goal of Quorah is to allow people a space to share their questions with others, learn from others, seek help with others, the potentials are limitless!
 
-#Link to Quorah website live on Heroku https://quorah.herokuapp.com/
+Link to Quorah website live on Heroku https://quorah.herokuapp.com/
 
 # Dynamic features
  * Comments
